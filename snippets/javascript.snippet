@@ -50,6 +50,7 @@ snippet method
 # function
 snippet func
     (function( window, document, $ ) {
+      ${1:script}
     })( window, document, jQuery );
 
 
@@ -97,3 +98,33 @@ snippet $dfdv
     });
 
     return $dfd.promise();
+
+    var _this = this;                                                                 
+
+# ******************************************
+# lodash snippet ***************************
+# CreateURL
+snippet _.for
+    _.forEach( ${1:object}, function ( value, key, object ) {
+      ${2:script}
+    });
+
+
+snippet _URL
+    this.BASE_URL = '${1:mydomain.com/url}';
+    this.BASE_OPTION = {
+      ${2:key} : '${3:value}'
+    };
+
+    this.url = this.BASE_URL + '?';
+
+    var delimiter = "";
+    _.forEach( this.BASE_OPTION, function ( value, key, arr ) {
+      _this.url += delimiter + key + '=' + value;
+      delimiter = '&';
+    });
+
+this.$tmp = _.template( ${4:jQuery Object} );
+
+
+
