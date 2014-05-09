@@ -3,6 +3,7 @@
 
 # ******************************************
 # JSDOC ************************************
+
 # file doc
 snippet file
     /** 
@@ -47,6 +48,11 @@ snippet method
 
 # ******************************************
 # javascrip snippet ************************
+
+# utility 
+snippet vth
+    var _this = this;                                                                 
+
 # function
 snippet func
     (function( window, document, $ ) {
@@ -55,7 +61,41 @@ snippet func
 
 
 # ******************************************
+# requirejs snippet ***************************
+
+snippet requirejs
+  var shim = {         
+    '${1:plugin_extension}': {
+      deps: ['jquery'],
+      exports: '$'
+    }
+  };
+
+  var paths = {
+    '${2:extension}':'${3:path}',
+  };
+
+  var ${4:context} = require.config({
+    shim        : shim,
+    waitSeconds : ${5:number},
+    paths       : paths,
+    context     : '${6:context}'
+  });
+
+  ${7:context}( ['${8:extension}'], function( ${9:export_variable} ){
+    ${9:export_variable}.initialize();
+  });
+
+# ******************************************
 # jQuery snippet ***************************
+
+# when 
+snippet $when
+  $.when( ${1:function/object})
+    .done( ${2:function} )
+    .fail( ${3:function} )
+    .always( ${4:function} );
+
 # Deferred
 snippet $dfd
     var ajax_options = {
@@ -99,10 +139,9 @@ snippet $dfdv
 
     return $dfd.promise();
 
-    var _this = this;                                                                 
-
 # ******************************************
 # lodash snippet ***************************
+
 # CreateURL
 snippet _.for
     _.forEach( ${1:object}, function ( value, key, object ) {
