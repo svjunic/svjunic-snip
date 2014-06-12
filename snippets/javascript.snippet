@@ -55,7 +55,7 @@ snippet vth
 
 # Math
 snippet Mf
-  Math.floor${1:切り捨てる Number}()
+  Math.floor(${1:切り捨てる Number})
 
 snippet Mc
   Math.ceil(${1:四捨五入 Number})
@@ -71,6 +71,29 @@ snippet func
     (function( window, document, $ ) {
       ${1:script}
     })( window, document, jQuery );
+
+# format
+snippet formatz
+  /**
+   * @param  {number} num  number or string
+   * @param  {number} n    number of characters
+   * @return {string} (In an error, 'false' is returned. )
+   */
+  fncZeroFormat = function(num, n) {
+    var target_string;
+    switch (typeof num) {
+      case 'string' : target_string = num;
+                      break;
+      case 'number' : target_string = num.toString();
+                      break;
+      default       : return false;
+    }
+    while(target_string.length < n){
+      target_string = "0" + target_string;
+    }
+    return target_string;
+  };
+
 
 
 # ******************************************
