@@ -28,7 +28,7 @@ snippet class
 snippet member
     /**
      * ${1:overview_html}
-     * @return {${2:type}}
+     * @member {${2:type}}
      */
 
 # method doc
@@ -58,10 +58,10 @@ snippet Mf
   Math.floor(${1:切り捨てる Number})
 
 snippet Mc
-  Math.ceil(${1:四捨五入 Number})
+  Math.ceil(${1:切り上げ Number})
 
 snippet Mr
-  Math.round(${1:切り上げ Number})
+  Math.round(${1:四捨五入 Number})
 
 snippet Ma
   Math.abs(${1:絶対値 Number})
@@ -144,6 +144,25 @@ snippet $ajax
     .fail( ${3:function} )
     .always( ${4:function} );
 
+snippet $ajaxhtml
+  var ajaxOptions = {
+      url      : '${1:mydomain.com/url}',
+      type     : 'GET',
+      dataType : 'html',
+      data     : $.param( $('${2:Element or Expression}') ),
+      beforeSend : function( xhr ) {
+       xhr.setRequestHeader("If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT");
+      },
+      jsonpCallback : '${3:callback function name}'
+  };
+
+  var jqxhr = $.ajax( ajaxOptions )
+    .done( function( responseText, textStatus, jqXHR ){
+      var html = jQuery(document.createElement('div')).append( jQuery.parseHTML( responseText ) ).find( ${4:selecter} )
+    })
+    .fail( ${5:function} )
+    .always( ${6:function} );
+
 # when 
 snippet $when
   $.when( ${1:function/object})
@@ -198,6 +217,13 @@ snippet $dfdv
 
     return $dfd.promise();
 
+# each
+snippet $each
+    ${1:jQuery Object}.each( function( index, element ) {
+        var $this = $( element );
+        ${2:script}
+    });
+
 # ******************************************
 # lodash snippet ***************************
 
@@ -205,6 +231,11 @@ snippet $dfdv
 snippet _.for
     _.forEach( ${1:object}, function ( value, key, object ) {
       ${2:script}
+    });
+
+snippet _.filter
+    _.filter( ${1:object}, function ( value, key, object ) {
+      return ${2:script}
     });
 
 
@@ -225,4 +256,33 @@ snippet _URL
 this.$tmp = _.template( ${4:jQuery Object} );
 
 
+
+#  // 画面幅
+#  screen.width
+#  // 画面高
+#  screen.height
+#  // 有効画面幅
+#  screen.availWidth
+#  // 有効画面高
+#  screen.availHeight
+#  // 表示領域幅
+#  window.innerWidth
+#  // 表示領域高
+#  window.innerHeight
+#  // ウィンドウ幅
+#  window.outerWidth
+#  // ウィンドウ高
+#  window.outerHeight
+#  // 表示領域幅
+#  $(window).width()
+#  // 表示領域高
+#  $(window).height()
+#  // 表示領域幅
+#  document.documentElement.clientWidth
+#  // 表示領域高
+#  document.documentElement.clientHeight
+#  // ドキュメント幅
+#  $(document).width()
+#  // ドキュメント高
+#  $(document).height()
 
