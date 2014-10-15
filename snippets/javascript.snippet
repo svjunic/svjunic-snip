@@ -6,52 +6,131 @@
 
 # file doc
 snippet file
-    /** 
+    /**
      * @fileOverview ${1:overview_html}
-     * 
+     *
      * @author ${2:author}
      * @version ${3:version}
      */
-     
+
 # class doc
-snippet class
+snippet docclass
     /**
      * ${1:overview_html}
-     * 
+     *
      * @class ${2:discription}
-     * 
+     *
      * @param {${3:type}} ${4:name} ${5:name2}
      * @param {${6:type}} ${7:name} ${8:name2}
      */
- 
+
 # member doc
-snippet member
+snippet docmember
     /**
      * ${1:overview_html}
      * @member {${2:type}}
      */
 
 # method doc
-snippet method
+snippet docmethod
     /**
      * ${1:overview_html}
-     * 
+     *
      * @param {${2:type}} ${3:name} ${4:name2}
      * @param {String} sep 分割表示用マーク
      * @return {String} 表示用文章
-     * 
-     * @example 
+     *
+     * @example
      * tiger.toString("：");
      * 出力：「虎太郎：オス」
-     * 
+     *
      */
 
 # ******************************************
-# javascrip snippet ************************
+# javascript snippet ************************
 
-# utility 
+# utility
 snippet vth
     var _this = this;
+
+# class
+snippet class
+  var ${1:ClassName} = {
+    ${2:MemberName} : ${3:VariableData}
+  };
+
+  ${1:ClassName}.create = function () {
+
+    var DefaultMember = this;
+
+    var app = {
+      ${5:MemberName} : this.${6:VariableData}
+    };
+
+    app.initialize = function () {
+      ${7:script}
+    };
+
+    return app;
+  };
+
+# width
+snippet ww
+  // 画面幅
+  var ${1:screenWidth} = screen.width;
+
+snippet www
+  // 有効画面幅
+  var ${1:screenAvailWidth} = screen.availWidth;
+
+snippet wwww
+  // 表示領域幅
+  var ${1:windowInnerWidth} = window.innerWidth;
+
+snippet wwwww
+  // ウィンドウ幅
+  var ${1:windowOuterWidth} = window.outerWidth;
+
+snippet wwwwww
+  // 表示領域幅
+  var ${1:clientWidth} = document.documentElement.clientWidth;
+
+snippet jw
+  // 表示領域幅
+  var ${1:windowWidth} = $(window).width();
+
+snippet jww
+  // ドキュメント幅
+  var ${1:documentWidth} = $(document).width();
+
+snippet hh
+  // 画面高
+  var ${1:screenHeight} = screen.height;
+
+snippet hhh
+  // 有効画面高
+  var ${1:screenAvailHeight} = screen.availHeight;
+
+snippet hhhh
+  // 表示領域高
+  var ${1:windowInnerHeight} = window.innerHeight;
+
+snippet hhhhh
+  // ウィンドウ高
+  var ${1:windowOuterHeight} = window.outerHeight;
+
+snippet hhhhhh
+  // 表示領域高
+  var ${1:clientHeight} = document.documentElement.clientHeight;
+
+
+snippet jh
+  // 表示領域高
+  var ${1:windowHeight} = $(window).height();
+
+snippet jhh
+  // ドキュメント高
+  var ${1:documentHeight} = $(document).height();
 
 # Math
 snippet Mf
@@ -100,7 +179,7 @@ snippet formatz
 # requirejs snippet ***************************
 
 snippet requirejs
-  var shim = {         
+  var shim = {
     '${1:plugin_extension}': {
       deps: ['jquery'],
       exports: '$'
@@ -163,7 +242,7 @@ snippet $ajaxhtml
     .fail( ${5:function} )
     .always( ${6:function} );
 
-# when 
+# when
 snippet $when
   $.when( ${1:function/object})
     .done( ${2:function} )
@@ -254,6 +333,7 @@ snippet _URL
     });
 
 this.$tmp = _.template( ${4:jQuery Object} );
+
 
 
 
