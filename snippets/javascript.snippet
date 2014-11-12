@@ -5,7 +5,7 @@
 # JSDOC ************************************
 
 # file doc
-snippet file
+snippet docfile
     /**
      * @fileOverview ${1:overview_html}
      *
@@ -53,7 +53,7 @@ snippet docmethod
 snippet vth
     var _this = this;
 
-# class
+# class(クロージャ。Singleton向け)
 snippet class
   var ${1:ClassName} = {
     ${2:MemberName} : ${3:VariableData}
@@ -68,6 +68,27 @@ snippet class
     };
 
     app.initialize = function () {
+      ${7:script}
+    };
+
+    return app;
+  };
+
+# classs(prototype。ちゃんと作るとき向け）
+snippet classs
+  var ${1:ClassName} = {
+    ${2:MemberName} : ${3:VariableData}
+  };
+
+  ${1:ClassName}.create = function () {
+
+    var app = function(){};
+
+    app.prototype = {
+      ${5:MemberName} : this.${6:VariableData}
+    };
+
+    app.prototype.initialize = function () {
       ${7:script}
     };
 
