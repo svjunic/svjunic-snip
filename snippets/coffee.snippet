@@ -9,27 +9,27 @@
 snippet class
   class ${1:ClassName} extends ${2:SuperClassName}
     # Static variables
-    @${1:VariableName} = {2:VariableData}
+    @${3:VariableName} = {4:VariableData}
      
     # fields
-    _${3:FieldVariableName} = ${4:FieldVariableData}
+    _${5:FieldVariableName} = ${6:FieldVariableData}
      
     # constructor
     constructor: (args)->
-      _${5:VariableName} = ${6:VariableData}
+      _${7:VariableName} = ${8:VariableData}
      
     # private methods
-    ${7:PrivateFunctionName} = (${8:args})->
+    ${9:PrivateFunctionName} = (${10:args})->
       return
 
     # public methods
-    ${9:VariableName}: (${10:args})->
-      ${11:PrivateFunctionName}.call @, target
+    ${11:VariableName}: (${12:args})->
+      ${13:PrivateFunctionName}.call @, target
 
     # getter/setter
-      @property '${9:VariableName}',
-        get: -> @_${9:VariableName}
-        set: (foo) -> @_${9:VariableName} = ${9:VariableName}
+      @property '${14:VariableName}',
+        get: -> @_${15:VariableName}
+        set: (foo) -> @_${16:VariableName} = ${17:VariableName}
 
 
 # width
