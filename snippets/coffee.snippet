@@ -5,45 +5,31 @@
 # ******************************************
 # javascript snippet ************************
 
-# class(クロージャ。Singleton向け)
+# class（coffee共通用）
 snippet class
-  ${1:ClassName} = 
-    ${2:MemberName}: ${3:VariableData}
-
-  ${1:ClassName}.create = ->
-    DefaultMember = this
-    app = ${5:MemberName}: @${6:VariableData}
-    app.initialize = ->
-      ${7:script}
-      return
-  
-    return app
-
-# classs(prototype。ちゃんと作るとき向け）
-snippet classs
-  ${1:ClassName} = 
-    ${2:MemberName}: ${3:VariableData}
-
-  ${1:ClassName}.create = ->
-
-    DefaultMember = this
-
-    app:: =
-      ${5:MemberName} : DefaultMember.${6:VariableData}
-
-    app.initialize = ->
-      ${7:script}
+  class ${1:ClassName} extends ${2:SuperClassName}
+    # Static variables
+    @${1:VariableName} = {2:VariableData}
+     
+    # fields
+    _${3:FieldVariableName} = ${4:FieldVariableData}
+     
+    # constructor
+    constructor: (args)->
+      _${5:VariableName} = ${6:VariableData}
+     
+    # private methods
+    ${7:PrivateFunctionName} = (${8:args})->
       return
 
-  Create = ->
-    createApp = ->
-    createApp:: = app::
-    return new createApp()
-  
-  # exports 
-  AppPackage = {}
-  AppPackage.superClass = app
-  AppPackage.create = Create
+    # public methods
+    ${9:VariableName}: (${10:args})->
+      ${11:PrivateFunctionName}.call @, target
+
+    # getter/setter
+      @property '${9:VariableName}',
+        get: -> @_${9:VariableName}
+        set: (foo) -> @_${9:VariableName} = ${9:VariableName}
 
 
 # width
@@ -121,6 +107,7 @@ snippet Ma
 snippet func
    ((window, document, $) ->
      ${1:script}
+     return
    ) window, document, jQuery 
 
 
@@ -154,6 +141,7 @@ snippet $ajaxhtml
       data     : $.param( $('${2:Element or Expression}') )
       beforeSend :( xhr ) ->
         xhr.setRequestHeader "If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT"
+        return
       jsonpCallback : '${3:callback function name}'
   
   jqxhr = $.ajax( ajaxOptions )
@@ -161,6 +149,7 @@ snippet $ajaxhtml
       html = jQuery document.createElement 'div'
              .append jQuery.parseHTML responseText
              .find ${4:selecter}
+      return
     .fail   ${5:function}
     .always ${6:function}
 
@@ -174,13 +163,16 @@ snippet $ajaxdfd
     data          : $.param( $('${4:Element or Expression}') )
     beforeSend    : ( xhr ) ->
       xhr.setRequestHeader "If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT"
+      return
     jsonpCallback : '${3:callback function name}'
 
   $.ajax ajaxOptions
     .done ( res, status, xhr ) ->
       $dfd.resolve()
+      return
     .fail () ->
       $dfd.reject()
+      return
   
   return $dfd.promise()
 
@@ -207,8 +199,8 @@ snippet $dfd
 # each
 snippet $each
     ${1:jQuery Object}.each index, element ->
-        $this = $( element )
-        return
+      $this = $( element )
+      return
 
 # ******************************************
 # lodash snippet ***************************
