@@ -1,4 +1,4 @@
 javascript-snippet
 ==================
 
-Small javascript(+jQuery) snippet
+Small javascript( + jQuery + CoffeeScript) snippet
