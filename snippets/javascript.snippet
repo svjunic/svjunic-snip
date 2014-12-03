@@ -92,7 +92,16 @@ snippet classs
       ${7:script}
     };
 
-    return app;
+    var Create = function () {
+      var SelectBox = function(){};
+      SelectBox.prototype = app.prototype;
+      return new SelectBox();
+    };
+
+    /* exports */
+    var AppPackage = {};
+    AppPackage.superClass  = app;
+    AppPackage.create = Create;
   };
 
 # width
