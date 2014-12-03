@@ -9,7 +9,7 @@
 snippet class
   class ${1:ClassName} extends ${2:SuperClassName}
     # Static variables
-    @${3:VariableName} = {4:VariableData}
+    @${3:VariableName} = ${4:VariableData}
      
     # fields
     _${5:FieldVariableName} = ${6:FieldVariableData}
@@ -34,60 +34,60 @@ snippet class
 
 # width
 snippet ww
-  // 画面幅
+  # 画面幅
   ${1:screenWidth} = screen.width;
 
 snippet www
-  // 有効画面幅
+  # 有効画面幅
   ${1:screenAvailWidth} = screen.availWidth;
 
 snippet wwww
-  // 表示領域幅
+  # 表示領域幅
   ${1:windowInnerWidth} = window.innerWidth;
 
 snippet wwwww
-  // ウィンドウ幅
+  # ウィンドウ幅
   ${1:windowOuterWidth} = window.outerWidth;
 
 snippet wwwwww
-  // 表示領域幅
+  # 表示領域幅
   ${1:clientWidth} = document.documentElement.clientWidth;
 
 snippet jw
-  // 表示領域幅
+  # 表示領域幅
   ${1:windowWidth} = $(window).width();
 
 snippet jww
-  // ドキュメント幅
+  # ドキュメント幅
   ${1:documentWidth} = $(document).width();
 
 snippet hh
-  // 画面高
+  # 画面高
   ${1:screenHeight} = screen.height;
 
 snippet hhh
-  // 有効画面高
+  # 有効画面高
   ${1:screenAvailHeight} = screen.availHeight;
 
 snippet hhhh
-  // 表示領域高
+  # 表示領域高
   ${1:windowInnerHeight} = window.innerHeight;
 
 snippet hhhhh
-  // ウィンドウ高
+  # ウィンドウ高
   ${1:windowOuterHeight} = window.outerHeight;
 
 snippet hhhhhh
-  // 表示領域高
+  # 表示領域高
   ${1:clientHeight} = document.documentElement.clientHeight;
 
 
 snippet jh
-  // 表示領域高
+  # 表示領域高
   ${1:windowHeight} = $(window).height();
 
 snippet jhh
-  // ドキュメント高
+  # ドキュメント高
   ${1:documentHeight} = $(document).height();
 
 # Math
