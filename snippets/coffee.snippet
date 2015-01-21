@@ -27,18 +27,19 @@ snippet class
       ${13:PrivateFunctionName}.call @, ${14:args}
 
     # getter/setter
-    @get '${16:VariableName}', -> return ${17:VariableName}
-    @set '${18:VariableName}', (${19:VariableName}) -> @${20:VariableName} = ${21:VariableName}
+    @get'${16:VariableName}' -> return @${17:VariableName}
+    @set'${18:VariableName}' -> (${19:VariableName}) -> @${20:VariableName} = ${21:VariableName}
 
 # getter
 snippet get
     @get '${1:VariableName}', ->
-      return ${2:VariableName}
+      return @${2:VariableName}
 
 # setter
 snippet set
     @set '${1:VariableName}', (${2:VariableName}) ->
       @${3:VariableName} = ${4:VariableName}
+      return
 
 # width
 snippet ww

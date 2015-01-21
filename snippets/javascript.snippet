@@ -53,6 +53,36 @@ snippet docmethod
 snippet vth
     var _this = this;
 
+snippet isIE6
+  var isIE6 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 6.") !== -1 );
+
+snippet isIE7
+  var isIE7 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 7.") !== -1 );
+
+snippet isIE8
+  var isIE8 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 8.") !== -1 );
+
+snippet isAndroid
+  var isAndroid = /Android/.test( window.navigator.userAgent );
+
+snippet isAndroid2
+  var isAndroid2 = /Android 2/.test( window.navigator.userAgent );
+
+snippet isAndroid4
+  var isAndroid4, isAndroid4Default, isAndroid4Chrome;
+  isAndroid4        = false;
+  isAndroid4Default = false;
+  isAndroid4Chrome  = false;
+  isAndroid4 = /Android 4/.test( window.navigator.userAgent );
+  if( isAndroid4 && /Android 4.*Version/.test( window.navigator.userAgent ) ){
+    isAndroid4Default = true;
+  } else {
+    isAndroid4Chrome = true;
+  }
+
+snippet isIOS
+  var isIOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
+
 # class(クロージャ。Singleton向け)
 snippet class
   var ${1:ClassName} = {
