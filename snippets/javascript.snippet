@@ -85,13 +85,7 @@ snippet isIOS
 
 # class(クロージャ。Singleton向け)
 snippet class
-  var ${1:ClassName} = {
-    ${2:MemberName} : ${3:VariableData}
-  };
-
   ${1:ClassName}.create = function () {
-
-    var DefaultMember = this;
 
     var app = {
       ${5:MemberName} : this.${6:VariableData}
