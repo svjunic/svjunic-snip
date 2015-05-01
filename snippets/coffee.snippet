@@ -22,13 +22,30 @@ snippet class
     ${9:PrivateFunctionName} = (${10:args})->
       return
 
-    # public methods
-    ${11:VariableName}: (${12:args})->
-      ${13:PrivateFunctionName}.call @, ${14:args}
+# だめっぽい
+#    # public methods
+#    ${11:VariableName}: (${12:args})->
+#      ${13:PrivateFunctionName}.call @, ${14:args}
+# 
+# だめっぽい
+#    # getter/setter
+#    @get'${16:VariableName}' -> return @${17:VariableName}
+#    @set'${18:VariableName}' -> (${19:VariableName}) -> @${20:VariableName} = ${21:VariableName}
 
-    # getter/setter
-    @get'${16:VariableName}' -> return @${17:VariableName}
-    @set'${18:VariableName}' -> (${19:VariableName}) -> @${20:VariableName} = ${21:VariableName}
+
+# class(クロージャ。Singleton向け)
+snippet class
+  ${1:ClassName}.create = ()->
+
+    app =
+      ${5:MemberName} : this.${6:VariableData}
+
+    app.initialize = ()->
+      ${7:script}
+      return
+
+    return @
+
 
 # getter
 snippet get
