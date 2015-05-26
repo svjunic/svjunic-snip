@@ -1,6 +1,101 @@
 # ******************************************
 # oirano snippet
 
+# ******************************************
+# JSDOC ************************************
+
+# file doc
+snippet @@file
+    /**
+     * @fileOverview ${1:overview_html}
+     *
+     * @author ${2:author}
+     * @version ${3:version}
+     */
+
+# class doc
+snippet @@class
+    /**
+     * ${1:overview_html}
+     *
+     * @class ${2:discription}
+     *
+     * @param {${3:type}} ${4:name} ${5:discription}
+     */
+
+# member doc
+snippet @@member
+    /**
+     * ${1:overview_html}
+     * @member {${2:type}}
+     */
+
+# method doc
+snippet @@method
+    /**
+     * ${1:overview_html}
+     *
+     * @param {${2:type}} ${3:name} ${4:discription}
+     * @param {String} sep 分割表示用マーク
+     * @return {String} 表示用文章
+     *
+     * @example
+     * tiger.toString("：");
+     * 出力：「虎太郎：オス」
+     *
+     */
+
+# jsdoc util
+## file
+snippet @@f
+  @file ${1:name}
+
+## fileOverview
+snippet @@fo
+  @fileOverview ${1:name}
+
+## author
+snippet @@a
+  @author ${1:name}
+
+## class
+snippet @@c
+  @class ${1:name}
+
+## version
+snippet @@v
+  @version ${1:version}
+
+## callback
+snippet @@c
+  @callback {Boolean} ${1:name} ${2:discription}
+
+## param
+snippet @@pb
+  @param {Boolean} ${1:name} ${2:discription}
+
+snippet @@pn
+  @param {Number} ${1:name} ${2:discription}
+
+snippet @@ps
+  @param {String} ${1:name} ${2:discription}
+
+snippet @@po
+  @param {Object} ${1:name} ${2:discription}
+
+## return
+snippet @@rb
+  @return {Boolean} ${1:name} ${2:discription}
+
+snippet @@rn
+  @return {Number} ${1:name} ${2:discription}
+
+snippet @@rs
+  @return {String} ${1:name} ${2:discription}
+
+snippet @@ro
+  @return {Object} ${1:name} ${2:discription}
+
 
 # ******************************************
 # javascript snippet ************************
@@ -22,16 +117,6 @@ snippet class
     ${9:PrivateFunctionName} = (${10:args})->
       return
 
-# だめっぽい
-#    # public methods
-#    ${11:VariableName}: (${12:args})->
-#      ${13:PrivateFunctionName}.call @, ${14:args}
-# 
-# だめっぽい
-#    # getter/setter
-#    @get'${16:VariableName}' -> return @${17:VariableName}
-#    @set'${18:VariableName}' -> (${19:VariableName}) -> @${20:VariableName} = ${21:VariableName}
-
 
 # class(クロージャ。Singleton向け)
 snippet class
@@ -49,14 +134,14 @@ snippet class
 
 # getter
 snippet get
-    @get '${1:VariableName}', ->
-      return @${2:VariableName}
+  get${1:VariableName}()->
+    return @${2:VariableName}
 
 # setter
 snippet set
-    @set '${1:VariableName}', (${2:VariableName}) ->
-      @${3:VariableName} = ${4:VariableName}
-      return
+  set${1:VariableName}(${2:VariableName})->
+    @${3:VariableName} = ${4:VariableName}
+    return
 
 # width
 snippet ww
@@ -146,7 +231,7 @@ snippet con
 
 #ajax
 snippet ajaxo
-  ajaxOptions = 
+    ajaxOptions = 
       url        : '${1:mydomain.com/url}',
       type       : '${2:POST}',
       dataType   : '${3:xml/html/script/json}',
@@ -157,13 +242,13 @@ snippet ajaxo
       jsonpCallback : '${3:callback function name}'
 
 snippet $ajax
-  jqxhr = $.ajax ajaxOptions
-          .done   ${2:function}
-          .fail   ${3:function}
-          .always ${4:function}
+    jqxhr = $.ajax ajaxOptions
+            .done   ${2:function}
+            .fail   ${3:function}
+            .always ${4:function}
 
 snippet $ajaxhtml
-  ajaxOptions =
+    ajaxOptions =
       url      : '${1:mydomain.com/url}'
       type     : 'GET'
       dataType : 'html'
@@ -173,14 +258,14 @@ snippet $ajaxhtml
         return
       jsonpCallback : '${3:callback function name}'
   
-  jqxhr = $.ajax( ajaxOptions )
-    .done ( responseText, textStatus, jqXHR )->
-      html = jQuery document.createElement 'div'
-             .append jQuery.parseHTML responseText
-             .find ${4:selecter}
-      return
-    .fail   ${5:function}
-    .always ${6:function}
+    jqxhr = $.ajax( ajaxOptions )
+      .done ( responseText, textStatus, jqXHR )->
+        html = jQuery document.createElement 'div'
+               .append jQuery.parseHTML responseText
+               .find ${4:selecter}
+        return
+      .fail   ${5:function}
+      .always ${6:function}
 
 snippet $ajaxdfd
   $dfd = $.Deferred()
