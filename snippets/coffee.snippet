@@ -6,44 +6,43 @@
 
 # file doc
 snippet @@file
-    /**
-     * @fileOverview ${1:overview_html}
-     *
-     * @author ${2:author}
-     * @version ${3:version}
-     */
+    ###
+    @fileOverview ${1:overview_html}
+    
+    @author ${2:author}
+    @version ${3:version}
+    ###
 
 # class doc
 snippet @@class
-    /**
-     * ${1:overview_html}
-     *
-     * @class ${2:discription}
-     *
-     * @param {${3:type}} ${4:name} ${5:discription}
-     */
+    ###
+    ${1:overview_html}
+    
+    @class ${2:discription}
+    
+    @param {${3:type}} ${4:name} ${5:discription}
+    ###
 
 # member doc
 snippet @@member
-    /**
-     * ${1:overview_html}
-     * @member {${2:type}}
-     */
+    ###
+    ${1:overview_html}
+    @member {${2:type}}
+    ###
 
 # method doc
 snippet @@method
-    /**
-     * ${1:overview_html}
-     *
-     * @param {${2:type}} ${3:name} ${4:discription}
-     * @param {String} sep 分割表示用マーク
-     * @return {String} 表示用文章
-     *
-     * @example
-     * tiger.toString("：");
-     * 出力：「虎太郎：オス」
-     *
-     */
+    ###
+    ${1:overview_html}
+    
+    @param {${2:type}} ${3:name} ${4:discription}
+    @param {String} sep 分割表示用マーク
+    @return {String} 表示用文章
+    
+    @example
+    tiger.toString("：");
+    出力：「虎太郎：オス」
+    ###
 
 # jsdoc util
 ## file
