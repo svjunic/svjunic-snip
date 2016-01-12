@@ -179,6 +179,64 @@ snippet classs
     AppPackage.create = Create;
   };
 
+# module
+snippet module
+  (function(definition){// 定義する関数を引数にとる
+      // CommonJS
+      if (typeof exports === "object") {
+        module.exports = definition();
+      // RequireJS
+      } else if (typeof define === "function" && define.amd) {
+        define(definition);
+      // <script>
+      } else {
+        ${1:#:ClassName} = definition();
+      }
+  })(function(){// 実際の定義を行う関数
+      'use strict';
+  
+      var ${1:$1} = function ${1:$1}(){};
+  
+      ${1:$1}.prototype = {
+        ${2:#:function_name}: ${3:#:function}
+      };
+  
+      // モジュールのエクスポート
+      return ${1:$1};
+  });
+
+
+
+# よく忘れるやつ
+#  // 画面幅
+#  screen.width
+#  // 画面高
+#  screen.height
+#  // 有効画面幅
+#  screen.availWidth
+#  // 有効画面高
+#  screen.availHeight
+#  // 表示領域幅
+#  window.innerWidth
+#  // 表示領域高
+#  window.innerHeight
+#  // ウィンドウ幅
+#  window.outerWidth
+#  // ウィンドウ高
+#  window.outerHeight
+#  // 表示領域幅
+#  $(window).width()
+#  // 表示領域高
+#  $(window).height()
+#  // 表示領域幅
+#  document.documentElement.clientWidth
+#  // 表示領域高
+#  document.documentElement.clientHeight
+#  // ドキュメント幅
+#  $(document).width()
+#  // ドキュメント高
+#  $(document).height()
+
 # width
 snippet ww
   // 画面幅
@@ -430,36 +488,3 @@ snippet _URL
     });
 
   this.$tmp = _.template( ${4:jQuery Object} );
-
-
-
-
-#  // 画面幅
-#  screen.width
-#  // 画面高
-#  screen.height
-#  // 有効画面幅
-#  screen.availWidth
-#  // 有効画面高
-#  screen.availHeight
-#  // 表示領域幅
-#  window.innerWidth
-#  // 表示領域高
-#  window.innerHeight
-#  // ウィンドウ幅
-#  window.outerWidth
-#  // ウィンドウ高
-#  window.outerHeight
-#  // 表示領域幅
-#  $(window).width()
-#  // 表示領域高
-#  $(window).height()
-#  // 表示領域幅
-#  document.documentElement.clientWidth
-#  // 表示領域高
-#  document.documentElement.clientHeight
-#  // ドキュメント幅
-#  $(document).width()
-#  // ドキュメント高
-#  $(document).height()
-
