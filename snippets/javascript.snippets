@@ -137,10 +137,10 @@ snippet isIOS
 snippet gtm
 options head indent
   dataLayer.push({
-    'gaCategory': '',
-    'gaAction': '',
-    'gaLabel' : '',
-    'event':'gaTrackEvent'
+    'event':'gaTrackEvent',
+    'gaCategory': '${1:gaCategoryName}',
+    'gaAction': '${2:gaAction}',
+    'gaLabel' : '${3:gaLabel}'
     });
 
 # class(クロージャ。Singleton向け)
