@@ -112,7 +112,7 @@ snippet @@ro
 
 
 # ******************************************
-# javascript snippet(navtive) **************
+# javascript snippet(native) ***************
 
 # module CommonJS
 snippet vrequire
@@ -247,7 +247,35 @@ options head indent
     ${3:$script}
   });
 
+# promise
+snippet promise
+options head indent
+  var ${1:PromiseName} = new Promise(function(resolve, reject){
+      resolve(${2:VariableData}); 
+    });
 
+  ${3:$3:PromiseName}.then(function(val) {
+      ${3:done}
+    })
+  .catch(function(reason) {
+      ${4:error or reject}
+    });
+
+snippet promiseall
+options head indent
+  Promise.all(${1:PromiseName}).then(function(value) {
+      ${2:done}
+    })
+  .catch(function(reason) {
+      ${3:error or reject}
+    });
+
+# ちょい早い
+#snippet promiserace
+#options head indent
+#  Promise.race(${1:PromiseName}).then(function(value) {
+#      ${2:script}
+#    });
 
 # ******************************************
 # javascript snippet(util) *****************
