@@ -473,14 +473,20 @@ snippet $ajaxdfd
 
 # when
 snippet $when
-  $.when( ${1:function/object})
-    .done( ${2:function} )
-    .fail( ${3:function} )
-    .always( ${4:function} );
+  $.when(${1:function/object})
+    .done(${2:function})
+    .fail(${3:function})
+    .always( ${4:function});
 
 snippet $whent
-  $.when( ${1:function/object})
-    .then( ${2:done_function}, ${3:fail_function} );
+  $.when(${1:function/object})
+    .then(${2:done_function}, ${3:fail_function});
+
+snippet $whenarray
+  $.when.apply(null, ${1:promsie_array})
+    .done(${2:function})
+    .fail(${3:function})
+    .always( ${4:function});
 
 # Deferred
 snippet $dfd
