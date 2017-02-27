@@ -112,94 +112,27 @@ snippet @@ro
 
 
 # ******************************************
-# javascript snippet ************************
+# javascript snippet(navtive) **************
 
-# utility
-snippet vth
-    var _this = this;
-
-snippet isIE6
-  var isIE6 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 6.") !== -1 );
-
-snippet isIE7
-  var isIE7 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 7.") !== -1 );
-
-snippet isIE8
-  var isIE8 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 8.") !== -1 );
-
-snippet isAndroid
-  var isAndroid = /Android/.test( window.navigator.userAgent );
-
-snippet isAndroid2
-  var isAndroid2 = /Android 2/.test( window.navigator.userAgent );
-
-snippet isAndroid4
-  var isAndroid4, isAndroid4Default, isAndroid4Chrome;
-  isAndroid4        = false;
-  isAndroid4Default = false;
-  isAndroid4Chrome  = false;
-  isAndroid4 = /Android 4/.test( window.navigator.userAgent );
-  if( isAndroid4 && /Android 4.*Version/.test( window.navigator.userAgent ) ){
-    isAndroid4Default = true;
-  } else {
-    isAndroid4Chrome = true;
-  }
-
-snippet isIOS
-  var isIOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
-
-snippet gtm
+# module CommonJS
+snippet vrequire
 options head indent
-  dataLayer.push({
-    'event':'gaTrackEvent',
-    'gaCategory': '${1:gaCategoryName}',
-    'gaAction': '${2:gaAction}',
-    'gaLabel' : '${3:gaLabel}'
-    });
+  var ${1:$1} = require('${2:#:MoDuleName}');
 
-# class(クロージャ。Singleton向け)
-snippet class
-  ${1:ClassName}.create = function () {
+snippet export1
+options head indent
+  module.exports = ${1:$1#object or function};
 
-    var app = {
-      ${5:MemberName} : this.${6:VariableData}
-    };
-
-    app.initialize = function () {
-      ${7:script}
-    };
-
-    return app;
+snippet export2
+options head indent
+  module.exports = {
+    ${1:$1#name} : ${2:$1#object or function}
   };
 
-# classs(prototype。ちゃんと作るとき向け）
-snippet classs
-  var ${1:ClassName} = {
-    ${2:MemberName} : ${3:VariableData}
-  };
-
-  ${1:ClassName}.create = function () {
-
-    var app = function(){};
-
-    app.prototype = {
-      ${5:MemberName} : this.${6:VariableData}
-    };
-
-    app.prototype.initialize = function () {
-      ${7:script}
-    };
-
-    var Create = function () {
-      var SelectBox = function(){};
-      SelectBox.prototype = app.prototype;
-      return new SelectBox();
-    };
-
-    /* exports */
-    var AppPackage = {};
-    AppPackage.superClass  = app;
-    AppPackage.create = Create;
+snippet export3
+options head indent
+  exports = {
+    ${1:$1#name} : ${2:$1#object or function}
   };
 
 # module UMD
@@ -224,7 +157,6 @@ snippet module
 
       return ${1:$1};
   });
-
 
 # width
 snippet ww
@@ -298,10 +230,98 @@ snippet Ma
   Math.abs(${1:絶対値 Number})
 
 # function
+snippet (func
+  (function() {
+    ${1:script}
+  });
+
 snippet func
-    (function( window, document, $ ) {
-      ${1:script}
-    })( window, document, jQuery );
+options head indent
+  (function( window, document, $ ) {
+    ${1:script}
+  })( window, document, jQuery );
+
+snippet forEach
+options head indent
+  ${1:$1#name}.forEach(function(${2:name} ,index,arr){
+    ${3:$script}
+  });
+
+
+
+# ******************************************
+# javascript snippet(util) *****************
+# utility
+snippet vth
+options head indent
+    var _this = this;
+
+snippet isIE6
+options head indent
+  var isIE6 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 6.") !== -1 );
+
+snippet isIE7
+options head indent
+  var isIE7 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 7.") !== -1 );
+
+snippet isIE8
+options head indent
+  var isIE8 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 8.") !== -1 );
+
+snippet isAndroid
+options head indent
+  var isAndroid = /Android/.test( window.navigator.userAgent );
+
+snippet isAndroid2
+options head indent
+  var isAndroid2 = /Android 2/.test( window.navigator.userAgent );
+
+snippet isAndroid4
+options head indent
+  var isAndroid4, isAndroid4Default, isAndroid4Chrome;
+  isAndroid4        = false;
+  isAndroid4Default = false;
+  isAndroid4Chrome  = false;
+  isAndroid4 = /Android 4/.test( window.navigator.userAgent );
+  if( isAndroid4 && /Android 4.*Version/.test( window.navigator.userAgent ) ){
+    isAndroid4Default = true;
+  } else {
+    isAndroid4Chrome = true;
+  }
+
+snippet isIOS
+options head indent
+  var isIOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
+
+snippet gtm
+options head indent
+  dataLayer.push({
+    'event':'gaTrackEvent',
+    'gaCategory': '${1:gaCategoryName}',
+    'gaAction': '${2:gaAction}',
+    'gaLabel' : '${3:gaLabel}',
+    'eventTimeout': '${4:time}',
+    'eventCallback': '${5:function}',
+    });
+
+# インスタンス生成用の仮想クラス
+snippet old_class
+options head indent
+  ${1:ClassName}.create = function () {
+
+    var app = {
+      ${5:MemberName} : this.${6:VariableData}
+    };
+
+    app.initialize = function () {
+      ${7:script}
+    };
+
+    return app;
+  };
+
+
+
 
 # format
 snippet formatz
