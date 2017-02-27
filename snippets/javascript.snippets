@@ -126,7 +126,7 @@ options head indent
 snippet export2
 options head indent
   module.exports = {
-    ${1:$1#name} : ${2:object or function}
+    ${1:name} : ${2:object or function}
   };
 
 snippet export3
@@ -134,6 +134,13 @@ options head indent
   exports = {
     ${1:name} : ${2:object or function}
   };
+
+snippet exportm
+options head indent
+  function ${1:#:name}(){
+  }
+
+  module.exports = $1;
 
 # module UMD
 snippet module
@@ -151,11 +158,11 @@ snippet module
   })(this, function(){
       'use strict';
   
-      var ${$1} = {};
+      var $1 = {};
 
       ${2:#:functions} 
 
-      return ${$1};
+      return $1;
   });
 
 # width
@@ -217,16 +224,16 @@ snippet jhh
   var ${1:documentHeight} = $(document).height();
 
 # Math
-snippet Mf
+snippet Mathf
   Math.floor(${1:切り捨てる Number})
 
-snippet Mc
+snippet Mathc
   Math.ceil(${1:切り上げ Number})
 
-snippet Mr
+snippet Mathr
   Math.round(${1:四捨五入 Number})
 
-snippet Ma
+snippet Matha
   Math.abs(${1:絶対値 Number})
 
 # function
@@ -254,11 +261,11 @@ options head indent
       resolve(${2:VariableData}); 
     });
 
-  ${3:$3:PromiseName}.then(function(val) {
-      ${3:done}
+  ${3:PromiseName}.then(function(val) {
+      ${4:done}
     })
-  .catch(function(reason) {
-      ${4:error or reject}
+    .catch(function(reason) {
+      ${5:error or reject}
     });
 
 snippet promiseall
