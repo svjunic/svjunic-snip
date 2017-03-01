@@ -246,6 +246,12 @@ options word
 
 snippet func(closure)
 options head indent
+  (function( window, document ) {
+    ${1:script}
+  })( window, document );
+
+snippet func(closure_jquery)
+options head indent
   (function( window, document, $ ) {
     ${1:script}
   })( window, document, jQuery );
@@ -263,7 +269,7 @@ options head indent
       resolve(${2:VariableData}); 
     });
 
-  ${3:PromiseName}.then(function(val) {
+  $3.then(function(val) {
       ${4:done}
     })
     .catch(function(reason) {
@@ -289,21 +295,49 @@ options head indent
 # ******************************************
 # javascript snippet(util) *****************
 # utility
-snippet vth
+snippet vthi
 options head indent
     var _this = this;
 
+snippet vtha
+options head indent
+    var _that = this;
+
+snippet vself
+options head indent
+    var self = this;
+
+snippet isIE
+options head indent
+  var isIE = ( ua.match(/MSIE/) || ua.match(/Trident/) )? true : false;
+
 snippet isIE6
 options head indent
-  var isIE6 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 6.") !== -1 );
+  var isIE6 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 6.") !== -1 )? true : false;
 
 snippet isIE7
 options head indent
-  var isIE7 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 7.") !== -1 );
+  var isIE7 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 7.") !== -1 )? true : false;
 
 snippet isIE8
 options head indent
-  var isIE8 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 8.") !== -1 );
+  var isIE8 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 8.") !== -1 )? true : false;
+
+snippet isIE9
+options head indent
+  var isIE9 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 9.") !== -1 )? true : false;
+
+snippet isIE10
+options head indent
+  var isIE10 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 10.") !== -1 )? true : false;
+
+snippet isIE11
+options head indent
+  var isIE11 = (function(){
+    var isIE = ( ua.match(/MSIE/) || ua.match(/Trident/) )? true : false;
+    var hasRv = ( window.navigator.appVersion.toLowerCase().indexOf("rv:11") !== -1 )? true : false;
+    return ( isIE && hasRv );
+  })();
 
 snippet isAndroid
 options head indent
@@ -347,11 +381,11 @@ options head indent
   ${1:ClassName}.create = function () {
 
     var app = {
-      ${5:MemberName} : this.${6:VariableData}
+      ${2:MemberName} : this.${3:VariableData}
     };
 
     app.initialize = function () {
-      ${7:script}
+      ${3:script}
     };
 
     return app;
