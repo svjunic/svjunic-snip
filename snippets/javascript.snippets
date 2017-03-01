@@ -269,11 +269,11 @@ options head indent
       resolve(${2:VariableData}); 
     });
 
-  $3.then(function(val) {
-      ${4:done}
+  $1.then(function(data) {
+      ${3:done}
     })
     .catch(function(reason) {
-      ${5:error or reject}
+      ${4:error or reject}
     });
 
 snippet promiseall
