@@ -309,7 +309,7 @@ options head indent
 
 snippet isIE
 options head indent
-  var isIE = (ua.match(/MSIE/) || ua.match(/Trident/))? true : false;
+  var isIE = (window.navigator.appVersion.match(/MSIE/) || window.navigator.appVersion.match(/Trident/))? true : false;
 
 snippet isIE6
 options head indent
