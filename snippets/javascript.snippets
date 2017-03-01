@@ -342,7 +342,7 @@ options head indent
 
 snippet isAndroid
 options head indent
-  var isAndroid = /Android/.test(window.navigator.userAgent);
+  var isAndroid = (/Android/.test(window.navigator.userAgent) && !/Windows Phone/.test(window.navigator.userAgent));
 
 snippet isAndroid2
 options head indent
