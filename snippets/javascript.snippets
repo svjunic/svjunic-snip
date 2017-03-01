@@ -309,43 +309,44 @@ options head indent
 
 snippet isIE
 options head indent
-  var isIE = ( ua.match(/MSIE/) || ua.match(/Trident/) )? true : false;
+  var isIE = (ua.match(/MSIE/) || ua.match(/Trident/))? true : false;
 
 snippet isIE6
 options head indent
-  var isIE6 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 6.") !== -1 )? true : false;
+  var isIE6 = (window.navigator.appVersion.toLowerCase().indexOf("msie 6.") !== -1)? true : false;
 
 snippet isIE7
 options head indent
-  var isIE7 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 7.") !== -1 )? true : false;
+  var isIE7 = (window.navigator.appVersion.toLowerCase().indexOf("msie 7.") !== -1)? true : false;
 
 snippet isIE8
 options head indent
-  var isIE8 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 8.") !== -1 )? true : false;
+  var isIE8 = (window.navigator.appVersion.toLowerCase().indexOf("msie 8.") !== -1)? true : false;
 
 snippet isIE9
 options head indent
-  var isIE9 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 9.") !== -1 )? true : false;
+  var isIE9 = (window.navigator.appVersion.toLowerCase().indexOf("msie 9.") !== -1)? true : false;
 
 snippet isIE10
 options head indent
-  var isIE10 = ( window.navigator.appVersion.toLowerCase().indexOf("msie 10.") !== -1 )? true : false;
+  var isIE10 = (window.navigator.appVersion.toLowerCase().indexOf("msie 10.") !== -1)? true : false;
 
 snippet isIE11
 options head indent
   var isIE11 = (function(){
-    var isIE = ( ua.match(/MSIE/) || ua.match(/Trident/) )? true : false;
-    var hasRv = ( window.navigator.appVersion.toLowerCase().indexOf("rv:11") !== -1 )? true : false;
-    return ( isIE && hasRv );
+    var appVersion = window.navigator.appVersion;
+    var isIE = (appVersion.match(/MSIE/) || appVersion.match(/Trident/))? true : false;
+    var hasRv = (window.navigator.appVersion.toLowerCase().indexOf("rv:11") !== -1)? true : false;
+    return (isIE && hasRv);
   })();
 
 snippet isAndroid
 options head indent
-  var isAndroid = /Android/.test( window.navigator.userAgent );
+  var isAndroid = /Android/.test(window.navigator.userAgent);
 
 snippet isAndroid2
 options head indent
-  var isAndroid2 = /Android 2/.test( window.navigator.userAgent );
+  var isAndroid2 = /Android 2/.test(window.navigator.userAgent);
 
 snippet isAndroid4
 options head indent
@@ -353,8 +354,8 @@ options head indent
   isAndroid4        = false;
   isAndroid4Default = false;
   isAndroid4Chrome  = false;
-  isAndroid4 = /Android 4/.test( window.navigator.userAgent );
-  if( isAndroid4 && /Android 4.*Version/.test( window.navigator.userAgent ) ){
+  isAndroid4 = /Android 4/.test(window.navigator.userAgent);
+  if(isAndroid4 && /Android 4.*Version/.test(window.navigator.userAgent)){
     isAndroid4Default = true;
   } else {
     isAndroid4Chrome = true;
@@ -362,7 +363,7 @@ options head indent
 
 snippet isIOS
 options head indent
-  var isIOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
+  var isIOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
 
 snippet gtm
 options head indent
