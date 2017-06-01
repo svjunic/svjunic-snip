@@ -1,115 +1,6 @@
 # ******************************************
 # oirano snippet
 
-# ******************************************
-# JSDOC ************************************
-
-# file doc
-snippet @@file
-    /**
-     * @fileOverview ${1:overview_html}
-     *
-     * @author ${2:author}
-     * @version ${3:version}
-     */
-
-# class doc
-snippet @@class
-    /**
-     * ${1:overview_html}
-     *
-     * @class ${2:discription}
-     *
-     * @param {${3:type}} ${4:name} ${5:discription}
-     */
-
-# member doc
-snippet @@member
-    /**
-     * ${1:overview_html}
-     * @member {${2:type}}
-     */
-
-# method doc
-snippet @@method
-    /**
-     * ${1:overview_html}
-     *
-     * @param {${2:type}} ${3:name} ${4:discription}
-     * @param {String} sep 分割表示用マーク
-     * @return {String} 表示用文章
-     *
-     * @example
-     * tiger.toString("：");
-     * 出力：「虎太郎：オス」
-     *
-     */
-
-# method doc
-snippet @@type
-    /**
-     * ${1:overview_html}
-     * @type {${2:type}}
-     */
-
-# method function
-snippet @@function
-    /**
-     * ${1:note}
-     * @param {${2:type}} ${3:name} - ${4:detail}
-     */
-
-# jsdoc util
-## file
-snippet @@f
-  @file ${1:name}
-
-## fileOverview
-snippet @@fo
-  @fileOverview ${1:name}
-
-## author
-snippet @@a
-  @author ${1:name}
-
-## class
-snippet @@c
-  @class ${1:name}
-
-## version
-snippet @@v
-  @version ${1:version}
-
-## callback
-snippet @@cb
-  @callback {Boolean} ${1:name} ${2:discription}
-
-## param
-snippet @@pb
-  @param {Boolean} ${1:name} ${2:discription}
-
-snippet @@pn
-  @param {Number} ${1:name} ${2:discription}
-
-snippet @@ps
-  @param {String} ${1:name} ${2:discription}
-
-snippet @@po
-  @param {Object} ${1:name} ${2:discription}
-
-## return
-snippet @@rb
-  @return {Boolean} ${1:name} ${2:discription}
-
-snippet @@rn
-  @return {Number} ${1:name} ${2:discription}
-
-snippet @@rs
-  @return {String} ${1:name} ${2:discription}
-
-snippet @@ro
-  @return {Object} ${1:name} ${2:discription}
-
 
 # ******************************************
 # javascript snippet(native) ***************
@@ -144,7 +35,8 @@ options head indent
   module.exports = $1;
 
 # module UMD
-snippet module
+snippet module_umd
+options head indent
   (function(root, definition){
       // CommonJS
       if (typeof exports === "object") {
@@ -575,3 +467,157 @@ snippet _URL
     });
 
   this.$tmp = _.template( ${4:jQuery Object} );
+
+
+# ******************************************
+# JSDOC ************************************
+
+# file doc
+snippet @file
+    /**
+     * @fileOverview ${1:overview_html}
+     *
+     * @author ${2:author}
+     * @version ${3:version}
+     */
+
+# class doc
+snippet @class
+    /**
+     * ${1:overview_html}
+     *
+     * @class ${2:discription}
+     *
+     * @param {${3:type}} ${4:name} ${5:discription}
+     */
+
+# member doc
+snippet @member
+    /**
+     * ${1:overview_html}
+     * @member {${2:type}}
+     */
+
+# method doc
+snippet @method
+    /**
+     * ${1:overview_html}
+     *
+     * @param {${2:type}} ${3:name} ${4:discription}
+     * @param {String} sep 分割表示用マーク
+     * @return {String} 表示用文章
+     *
+     * @example
+     * tiger.toString("：");
+     * 出力：「虎太郎：オス」
+     *
+     */
+
+# method doc
+snippet @type
+    /**
+     * ${1:overview_html}
+     * @type {${2:type}}
+     */
+
+# method function
+snippet @function
+    /**
+     * ${1:note}
+     * @param {${2:type}} ${3:name} - ${4:detail}
+     */
+
+# jsdoc util
+## file
+snippet @f
+  @file ${1:name}
+
+## fileOverview
+snippet @fo
+  @fileOverview ${1:name}
+
+## author
+snippet @a
+  @author ${1:name}
+
+## class
+snippet @c
+  @class ${1:name}
+
+## version
+snippet @v
+  @version ${1:version}
+
+## callback
+snippet @cb
+  @callback {Boolean} ${1:name} ${2:discription}
+
+## param
+snippet @pb
+  @param {Boolean} ${1:name} ${2:discription}
+
+snippet @pn
+  @param {Number} ${1:name} ${2:discription}
+
+snippet @ps
+  @param {String} ${1:name} ${2:discription}
+
+snippet @po
+  @param {Object} ${1:name} ${2:discription}
+
+## return
+snippet @rb
+  @return {Boolean} ${1:name} ${2:discription}
+
+snippet @rn
+  @return {Number} ${1:name} ${2:discription}
+
+snippet @rs
+  @return {String} ${1:name} ${2:discription}
+
+snippet @ro
+  @return {Object} ${1:name} ${2:discription}
+
+
+# ******************************************
+# ES6 snippet ******************************
+snippet module_es6
+options head indent
+  /**
+   * ${1:html_overview}
+   * @class ${2:ClassName}
+   * @extends ${3:extends_class}
+   */
+  export default class $2 () {
+    constructer (){
+    }
+    ${6:next_pointer}
+  }
+
+snippet method_static_es6
+options indent
+  /**
+   * ${1:method_overview}
+   * ${2:@p_OR_@r}
+   * @method ${3:className}#${4:methodName}
+   */
+  static $4 (${5:param}){
+  }
+
+snippet get_es6 
+options indent
+  /**
+   * ${1:method_overview}
+   * ${2:@p_OR_@r}
+   */
+  get ${3:methodName} (${4:param}){
+  }
+
+snippet set_es6 
+options indent
+  /**
+   * ${1:method_overview}
+   * ${2:@p_OR_@r}
+   */
+  set ${3:methodName} (${4:param}){
+  }
