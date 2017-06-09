@@ -1,0 +1,45 @@
+snippet flexc
+options head indent
+  .flex-container {
+    display: ${1:flex or inline-flex};
+
+    # boxの並び方向
+    flex-direction: ${2:row, row-reverse, column, column-reverse};
+
+    # ボックスが並んだときに改行するかどうか
+    flex-wrap: ${3:wrap or nowrap};
+
+    #directionとwrapのショートハンド、どっちでもいい
+    flex-flow: $2 $3;
+
+    # text-alignみたいなやつ（space-between は等間隔
+    justify-content: ${4:flex-start, flex-end, center, space-between};
+
+    # アイテムが１行の場合の配置（stretchは均等配置、flex-startは左上基準、flex-endは左下基準、centerは中央寄せ基準, baselineはbaseline基準）
+    align-items: ${5:stretch, flex-start, flex-end, center, baseline};
+
+    # アイテムが複数行になる場合の配置（stretchは均等配置、flex-startは左上基準、flex-endは左下基準、centerは中央寄せ基準, baselineはbaseline基準）
+    align-content: ${6:stretch, flex-start, flex-end, center, baseline};
+  }
+  # 仮クラス
+  .flex-item {
+    # 個別の配置指定
+    align-self: ${7:stretch, flex-start, flex-end, auto, center, baseline};
+
+    # 均等に並べた場合に余分なスペースが有り、アイテムが伸びている状態の場合の他のアイテムと比較した場合の大きさ
+    flex-grow: ${8:0〜};
+
+    # 入り切らない場合の圧縮率指定（マイナスは無効）テーブルみたいに適当に狭まる
+    flex-shrink: ${9:0〜};
+
+    # 個別に幅指定をする場合
+    flex-basis: ${10:auot, width(px)};
+
+    # flex-grow, flex-shrink, flex-basis のショートハンド
+    flex: ${11:none} $8 $9 $10;
+  }
+
+
+snippet transition
+options head indent
+  transition: ${1:propety} ${2:transition-delay} ${3:transition-timing-funciton} ${4:transition-duration};${5:cursor}
