@@ -434,6 +434,19 @@ snippet $each
     });
 
 # ******************************************
+# extend console ***************************
+snippet console.group
+    console.group(${1:object});
+    ${2:script}
+    console.groupEnd($1);
+
+snippet console.groupCollapsed
+    console.groupCollapsed(${1:object});
+    ${2:script}
+    console.groupEnd($1);
+
+
+# ******************************************
 # lodash and undersocre snippet ************
 
 # CreateURL
