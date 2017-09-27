@@ -1,63 +1,212 @@
 # ******************************************
 # oirano snippet
 
-
 # ******************************************
-# javascript snippet(native) ***************
-
-# module CommonJS
-snippet vrequire
+# ES2015 snippet ***************************
+snippet module
 options head indent
-  var ${1:name} = require('${2:MoDuleName}');
-
-snippet export1
-options head indent
-  module.exports = ${1:object or function};
-
-snippet export2
-options head indent
-  module.exports = {
-    ${1:name} : ${2:object or function}
-  };
-
-snippet export3
-options head indent
-  exports = {
-    ${1:name} : ${2:object or function}
-  };
-
-snippet exportm
-options head indent
-  function ${1:name}(){
-    ${2:script}
+  /**
+   * ${1:html_overview}
+   * @class ${2:ClassName}
+   */
+  export default class $2 {
+    constructor (){
+      ${0}
+    }
   }
 
-  module.exports = $1;
-
-# module UMD
-snippet module_umd
+snippet 
 options head indent
-  (function(root, definition){
-      // CommonJS
-      if (typeof exports === "object") {
-        module.exports = definition();
-      // RequireJS
-      } else if (typeof define === "function" && define.amd) {
-        define(definition);
-      // <script>
-      } else {
-        ${1:ClassName} = definition();
-      }
-  })(this, function(){
-      'use strict';
-  
-      var $1 = {};
+  /**
+   * ${1:html_overview}
+   * @class ${2:ClassName}
+   * @extends ${3:extends_class}
+   */
+  export default class $2 $3 {
+    constructor (){
+      ${0}
+    }
+  }
 
-      ${2:functions} 
+# export
+snippet export_es2015_1
+options head indent
+  export ${1:variable or func or etc..};
 
-      return $1;
+snippet export_es2015_2
+options head indent
+  export {${1:variable or func or etc..}};
+
+snippet export_default_es2015_1
+options head indent
+  export default ${1:variable or func or etc..};
+
+snippet export_default_es2015_2
+options head indent
+  export default {${1:variable or func or etc..}};
+
+snippet static_method
+options head indent
+  /**
+   * ${1:method_overview}
+   * ${2:@p_OR_@r}
+   * @method ${3:className}#${4:methodName}
+   */
+  static $4 (${5:param}){
+    ${0}
+  }
+
+# function
+snippet func_es2015
+options word
+  function ${1:functionName}(${2:variable or variable=defaultValue}) {
+    ${0}
+  }
+
+# arrow function
+snippet =>
+options word
+  (${1:VariableData}) => {
+    ${0}
+  }
+
+# getter
+snippet get-normal
+options head indent
+  get ${1:methodName} (){
+    ${0}
+  }
+
+snippet get-static
+options head indent
+  /**
+   * ${1:method_overview}
+   */
+  static get ${3:methodName} (${4:param}){
+    ${0}
+  }
+
+# setter
+snippet set-normal
+options indent
+  set ${3:MethodName} (${4:param}){
+    ${0}
+  }
+
+snippet set-static
+options head indent
+  /**
+   * ${1:method_overview}
+   * ${2:@p_OR_@r}
+   */
+  static set ${3:methodName} (${4:param}){
+    ${0}
+  }
+
+# import
+snippet import_es2015_1
+options head indent
+  import ${2:variable} from "${1:module}";
+
+snippet import_es2015_2
+options head indent
+  import * as namefrom "${1:module}";
+
+# console and debugger
+snippet console.group
+  console.group(${1:object});
+  ${2:script}
+  console.groupEnd($1);
+
+snippet console.groupCollapsed
+  console.groupCollapsed(${1:object});
+  ${2:script}
+  console.groupEnd($1);
+
+snippet debugger
+  debugger;
+
+# statements
+snippet let1
+  let ${1} = ${2:'$1'};
+
+snippet let2
+  let [${1}] = [${2:'$1'}];
+
+snippet const1
+  const ${1} = ${2:'$1'};
+
+snippet const2
+  const [${1}] = [${2:'$1'}];
+
+snippet var2
+  var ${1} = ${2:'$1'};
+
+snippet var2
+  var [${1}] = [${2:'$1'}];
+
+# promise
+snippet promise1_fullset
+  ${1:PromiseName} = new Promise(function(resolve, reject){
+    resolve(${2:VariableData}); 
   });
 
+  $1.then(function(data) {
+    ${3:done}
+  })
+  .catch(function(reason) {
+    ${4:error or reject}
+  });
+
+snippet promise2_promise_only
+  ${1:PromiseName} = new Promise(function(resolve, reject){
+    resolve(${2:VariableData}); 
+  });
+
+snippet promise_all
+options head indent
+  Promise.all(${1:PromiseName}).then(function(value) {
+    ${2:done}
+  })
+  .catch(function(reason) {
+    ${3:error or reject}
+  });
+
+# ちょい早い
+#snippet promiserace
+#options head indent
+#  Promise.race(${1:PromiseName}).then(function(value) {
+#    ${2:script}
+#  });
+
+# generator
+snippet gen_function1
+options head indent
+  function* ${1}($2) {
+    yield ${3};
+  }
+  let ${4:generatorName} = $1();
+
+snippet gen_function2_while_sample
+abbr /* count up sample */
+options head indent
+  function* ${1}($2) {
+    let i = 1;
+    let num = 1;
+    while (true) {
+      num += i
+      yield num
+    }
+  }
+  let ${3:generatorName} = $1();
+
+snippet next
+abbr /* console.log(gen.next());// { value: yieldValue, done: boolean } */
+  ${1:generatorName}.next()
+
+
+# ******************************************
+# javascript snippet(browser ) *************
 # width
 snippet ww
   // 画面幅
@@ -132,72 +281,49 @@ snippet Matha(絶対値)
 # function
 snippet func(callback)
 options word
-  function(${1:VariableData}) {
-    ${2:script}
+  function(${1:variable or variable=defaultValue}) {
+  ${2:script}
   });
 
 snippet func(closure)
 options head indent
   (function( window, document ) {
-    ${1:script}
+  ${1:script}
   })( window, document );
 
 snippet func(closure_jquery)
 options head indent
   (function( window, document, $ ) {
-    ${1:script}
+  ${1:script}
   })( window, document, jQuery );
 
+# native function
 snippet forEach
 options head indent
   ${1:name}.forEach(function(${2:name} ,index,arr){
-    ${3:$script}
+  ${3:$script}
   });
 
-# promise
-snippet promise
+snippet objectKeys
 options head indent
-  var ${1:PromiseName} = new Promise(function(resolve, reject){
-      resolve(${2:VariableData}); 
-    });
-
-  $1.then(function(data) {
-      ${3:done}
-    })
-    .catch(function(reason) {
-      ${4:error or reject}
-    });
-
-snippet promiseall
-options head indent
-  Promise.all(${1:PromiseName}).then(function(value) {
-      ${2:done}
-    })
-  .catch(function(reason) {
-      ${3:error or reject}
-    });
-
-# ちょい早い
-#snippet promiserace
-#options head indent
-#  Promise.race(${1:PromiseName}).then(function(value) {
-#      ${2:script}
-#    });
+  Object.keys(${1:ObjectName}).forEach(function(key,value){
+  ${3:$script}
+  });
 
 # ******************************************
 # javascript snippet(util) *****************
 # utility
 snippet vthi
 options head indent
-    var _this = this;
+  var _this = this;
 
 snippet vtha
 options head indent
-    var _that = this;
+  var _that = this;
 
 snippet vself
 options head indent
-    var self = this;
+  var self = this;
 
 snippet isIE
 options head indent
@@ -226,10 +352,10 @@ options head indent
 snippet isIE11
 options head indent
   var isIE11 = (function(){
-    var appVersion = window.navigator.appVersion;
-    var isIE = (appVersion.match(/MSIE/) || appVersion.match(/Trident/))? true : false;
-    var hasRv = (window.navigator.appVersion.toLowerCase().indexOf("rv:11") !== -1)? true : false;
-    return (isIE && hasRv);
+  var appVersion = window.navigator.appVersion;
+  var isIE = (appVersion.match(/MSIE/) || appVersion.match(/Trident/))? true : false;
+  var hasRv = (window.navigator.appVersion.toLowerCase().indexOf("rv:11") !== -1)? true : false;
+  return (isIE && hasRv);
   })();
 
 snippet isAndroid
@@ -243,14 +369,14 @@ options head indent
 snippet isAndroid4
 options head indent
   var isAndroid4, isAndroid4Default, isAndroid4Chrome;
-  isAndroid4        = false;
+  isAndroid4    = false;
   isAndroid4Default = false;
   isAndroid4Chrome  = false;
   isAndroid4 = /Android 4/.test(window.navigator.userAgent);
   if(isAndroid4 && /Android 4.*Version/.test(window.navigator.userAgent)){
-    isAndroid4Default = true;
+  isAndroid4Default = true;
   } else {
-    isAndroid4Chrome = true;
+  isAndroid4Chrome = true;
   }
 
 snippet isIOS
@@ -260,28 +386,28 @@ options head indent
 snippet gtm
 options head indent
   dataLayer.push({
-    'event':'gaTrackEvent',
-    'gaCategory': '${1:gaCategoryName}',
-    'gaAction': '${2:gaAction}',
-    'gaLabel' : '${3:gaLabel}',
-    'eventTimeout': '${4:time}',
-    'eventCallback': '${5:function}',
-    });
+  'event':'gaTrackEvent',
+  'gaCategory': '${1:gaCategoryName}',
+  'gaAction': '${2:gaAction}',
+  'gaLabel' : '${3:gaLabel}',
+  'eventTimeout': '${4:time}',
+  'eventCallback': '${5:function}',
+  });
 
 # インスタンス生成用の仮想クラス
 snippet old_class
 options head indent
   ${1:ClassName}.create = function () {
 
-    var app = {
-      ${2:MemberName} : this.${3:VariableData}
-    };
+  var app = {
+    ${2:MemberName} : this.${3:VariableData}
+  };
 
-    app.initialize = function () {
-      ${3:script}
-    };
+  app.initialize = function () {
+    ${3:script}
+  };
 
-    return app;
+  return app;
   };
 
 
@@ -291,22 +417,22 @@ options head indent
 snippet formatz
   /**
    * @param  {number} num  number or string
-   * @param  {number} n    number of characters
+   * @param  {number} n  number of characters
    * @return {string} (In an error, 'false' is returned. )
    */
   fncZeroFormat = function(num, n) {
-    var target_string;
-    switch (typeof num) {
-      case 'string' : target_string = num;
-                      break;
-      case 'number' : target_string = num.toString();
-                      break;
-      default       : return false;
-    }
-    while(target_string.length < n){
-      target_string = "0" + target_string;
-    }
-    return target_string;
+  var target_string;
+  switch (typeof num) {
+    case 'string' : target_string = num;
+            break;
+    case 'number' : target_string = num.toString();
+            break;
+    default     : return false;
+  }
+  while(target_string.length < n){
+    target_string = "0" + target_string;
+  }
+  return target_string;
   };
 
 
@@ -316,25 +442,25 @@ snippet formatz
 
 snippet requirejs
   var shim = {
-    '${1:plugin_extension}': {
-      deps: ['jquery'],
-      exports: '$'
-    }
+  '${1:plugin_extension}': {
+    deps: ['jquery'],
+    exports: '$'
+  }
   };
 
   var paths = {
-    '${2:extension}':'${3:path}',
+  '${2:extension}':'${3:path}',
   };
 
   var ${4:context} = require.config({
-    shim        : shim,
-    waitSeconds : ${5:number},
-    paths       : paths,
-    context     : '${6:context}'
+  shim    : shim,
+  waitSeconds : ${5:number},
+  paths     : paths,
+  context   : '${6:context}'
   });
 
   ${7:context}( ['${8:extension}'], function( ${9:export_variable} ){
-    ${9:export_variable}.initialize();
+  ${9:export_variable}.initialize();
   });
 
 # ******************************************
@@ -343,107 +469,96 @@ snippet requirejs
 #ajax
 snippet ajaxo
   var ajaxOptions = {
-      url      : '${1:mydomain.com/url}',
-      type     : '${2:POST}',
-      dataType : '${3:xml/html/script/json}',
-      data     : $.param( $('${4:Element or Expression}') ),
-      beforeSend : function( xhr ) {
-       xhr.setRequestHeader("If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT");
-      },
-      jsonpCallback : '${3:callback function name}'
+    url    : '${1:mydomain.com/url}',
+    type   : '${2:POST}',
+    dataType : '${3:xml/html/script/json}',
+    data   : $.param( $('${4:Element or Expression}') ),
+    beforeSend : function( xhr ) {
+     xhr.setRequestHeader("If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT");
+    },
+    jsonpCallback : '${3:callback function name}'
   };
 
 snippet $ajax
   var jqxhr = $.ajax( ajaxOptions  )
-    .done( ${2:function} )
-    .fail( ${3:function} )
-    .always( ${4:function} );
+  .done( ${2:function} )
+  .fail( ${3:function} )
+  .always( ${4:function} );
 
 snippet $ajaxhtml
   var ajaxOptions = {
-      url      : '${1:mydomain.com/url}',
-      type     : 'GET',
-      dataType : 'html',
-      data     : $.param( $('${2:Element or Expression}') ),
-      beforeSend : function( xhr ) {
-       xhr.setRequestHeader("If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT");
-      },
-      jsonpCallback : '${3:callback function name}'
+    url    : '${1:mydomain.com/url}',
+    type   : 'GET',
+    dataType : 'html',
+    data   : $.param( $('${2:Element or Expression}') ),
+    beforeSend : function( xhr ) {
+     xhr.setRequestHeader("If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT");
+    },
+    jsonpCallback : '${3:callback function name}'
   };
 
   var jqxhr = $.ajax( ajaxOptions )
-    .done( function( responseText, textStatus, jqXHR ){
-      var html = jQuery(document.createElement('div')).append( jQuery.parseHTML( responseText ) ).find( ${4:selecter} )
-    })
-    .fail( ${5:function} )
-    .always( ${6:function} );
+  .done( function( responseText, textStatus, jqXHR ){
+    var html = jQuery(document.createElement('div')).append( jQuery.parseHTML( responseText ) ).find( ${4:selecter} )
+  })
+  .fail( ${5:function} )
+  .always( ${6:function} );
 
 snippet $ajaxdfd
-    var $dfd = $.Deferred();
+  var $dfd = $.Deferred();
 
-    var ajaxOptions = {
-        url      : '${1:mydomain.com/url}',
-        type     : '${2:POST}',
-        dataType : '${3:xml/html/script/json}',
-        data     : $.param( $('${4:Element or Expression}') ),
-        beforeSend : function( xhr ) {
-         xhr.setRequestHeader("If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT");
-        },
-        jsonpCallback : '${3:callback function name}'
-    };
+  var ajaxOptions = {
+    url    : '${1:mydomain.com/url}',
+    type   : '${2:POST}',
+    dataType : '${3:xml/html/script/json}',
+    data   : $.param( $('${4:Element or Expression}') ),
+    beforeSend : function( xhr ) {
+     xhr.setRequestHeader("If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT");
+    },
+    jsonpCallback : '${3:callback function name}'
+  };
 
-    $.ajax( ajaxOptions ).done( function ( res, status, xhr ) {
-        $dfd.resolve();
-    }).fail(function () {
-        $dfd.reject();
-    });
+  $.ajax( ajaxOptions ).done( function ( res, status, xhr ) {
+    $dfd.resolve();
+  }).fail(function () {
+    $dfd.reject();
+  });
 
-    return $dfd.promise();
+  return $dfd.promise();
 
 # when
 snippet $when
   $.when(${1:function/object})
-    .done(${2:function})
-    .fail(${3:function})
-    .always( ${4:function});
+  .done(${2:function})
+  .fail(${3:function})
+  .always( ${4:function});
 
 snippet $whent
   $.when(${1:function/object})
-    .then(${2:done_function}, ${3:fail_function});
+  .then(${2:done_function}, ${3:fail_function});
 
 snippet $whenarray
   $.when.apply(null, ${1:promsie_array})
-    .done(${2:function})
-    .fail(${3:function})
-    .always( ${4:function});
+  .done(${2:function})
+  .fail(${3:function})
+  .always( ${4:function});
 
 # Deferred
 snippet $dfd
-    var $dfd = $.Deferred();
+  var $dfd = $.Deferred();
 
-    $dfd.resolve();
-    $dfd.reject();
+  $dfd.resolve();
+  $dfd.reject();
 
-    return $dfd.promise();
+  return $dfd.promise();
 
 # each
 snippet $each
-    ${1:jQuery Object}.each( function( index, element ) {
-        var $this = $( element );
-        ${2:script}
-    });
-
-# ******************************************
-# extend console ***************************
-snippet console.group
-    console.group(${1:object});
+  ${1:jQuery Object}.each( function( index, element ) {
+    var $this = $( element );
     ${2:script}
-    console.groupEnd($1);
+  });
 
-snippet console.groupCollapsed
-    console.groupCollapsed(${1:object});
-    ${2:script}
-    console.groupEnd($1);
 
 
 # ******************************************
@@ -451,33 +566,33 @@ snippet console.groupCollapsed
 
 # CreateURL
 snippet _for
-    _.forEach( ${1:object}, function ( ${2:value}, key, object ) {
-      ${3:script}
-    });
+  _.forEach( ${1:object}, function ( ${2:value}, key, object ) {
+    ${3:script}
+  });
 
 snippet _filter
-    _.filter( ${1:object}, function ( value, key, object ) {
-      return ${2:script}
-    });
+  _.filter( ${1:object}, function ( value, key, object ) {
+    return ${2:script}
+  });
 
 snippet _map
-    _.map( ${1:object}, function ( value, key, object ) {
-      return ${2:script}
-    });
+  _.map( ${1:object}, function ( value, key, object ) {
+    return ${2:script}
+  });
 
 snippet _URL
-    this.BASE_URL = '${1:mydomain.com/url}';
-    this.BASE_OPTION = {
-      ${2:key} : '${3:value}'
-    };
+  this.BASE_URL = '${1:mydomain.com/url}';
+  this.BASE_OPTION = {
+    ${2:key} : '${3:value}'
+  };
 
-    this.url = this.BASE_URL + '?';
+  this.url = this.BASE_URL + '?';
 
-    var delimiter = "";
-    _.forEach( this.BASE_OPTION, function ( value, key, arr ) {
-      _this.url += delimiter + key + '=' + value;
-      delimiter = '&';
-    });
+  var delimiter = "";
+  _.forEach( this.BASE_OPTION, function ( value, key, arr ) {
+    _this.url += delimiter + key + '=' + value;
+    delimiter = '&';
+  });
 
   this.$tmp = _.template( ${4:jQuery Object} );
 
@@ -487,58 +602,58 @@ snippet _URL
 
 # file doc
 snippet @file
-    /**
-     * @fileOverview ${1:overview_html}
-     *
-     * @author ${2:author}
-     * @version ${3:version}
-     */
+  /**
+   * @fileOverview ${1:overview_html}
+   *
+   * @author ${2:author}
+   * @version ${3:version}
+   */
 
 # class doc
 snippet @class
-    /**
-     * ${1:overview_html}
-     *
-     * @class ${2:discription}
-     *
-     * @param {${3:type}} ${4:name} ${5:discription}
-     */
+  /**
+   * ${1:overview_html}
+   *
+   * @class ${2:discription}
+   *
+   * @param {${3:type}} ${4:name} ${5:discription}
+   */
 
 # member doc
 snippet @member
-    /**
-     * ${1:overview_html}
-     * @member {${2:type}}
-     */
+  /**
+   * ${1:overview_html}
+   * @member {${2:type}}
+   */
 
 # method doc
 snippet @method
-    /**
-     * ${1:overview_html}
-     *
-     * @param {${2:type}} ${3:name} ${4:discription}
-     * @param {String} sep 分割表示用マーク
-     * @return {String} 表示用文章
-     *
-     * @example
-     * tiger.toString("：");
-     * 出力：「虎太郎：オス」
-     *
-     */
+  /**
+   * ${1:overview_html}
+   *
+   * @param {${2:type}} ${3:name} ${4:discription}
+   * @param {String} sep 分割表示用マーク
+   * @return {String} 表示用文章
+   *
+   * @example
+   * tiger.toString("：");
+   * 出力：「虎太郎：オス」
+   *
+   */
 
 # method doc
 snippet @type
-    /**
-     * ${1:overview_html}
-     * @type {${2:type}}
-     */
+  /**
+   * ${1:overview_html}
+   * @type {${2:type}}
+   */
 
 # method function
 snippet @function
-    /**
-     * ${1:note}
-     * @param {${2:type}} ${3:name} - ${4:detail}
-     */
+  /**
+   * ${1:note}
+   * @param {${2:type}} ${3:name} - ${4:detail}
+   */
 
 # jsdoc util
 ## file
@@ -592,45 +707,56 @@ snippet @ro
   @return {Object} ${1:name} ${2:discription}
 
 
-# ******************************************
-# ES6 snippet ******************************
-snippet module_es6
+
+# module CommonJS
+snippet vrequire
 options head indent
-  /**
-   * ${1:html_overview}
-   * @class ${2:ClassName}
-   * @extends ${3:extends_class}
-   */
-  export default class $2 {
-    constructor (){
+  var ${1:name} = require('${2:MoDuleName}');
+
+snippet cexport1
+options head indent
+  module.exports = ${1:object or function};
+
+snippet cexport2
+options head indent
+  module.exports = {
+  ${1:name} : ${2:object or function}
+  };
+
+snippet cexport3
+options head indent
+  exports = {
+  ${1:name} : ${2:object or function}
+  };
+
+snippet cexportm
+options head indent
+  function ${1:name}(){
+  ${2:script}
+  }
+  module.exports = $1;
+
+
+# module UMD
+snippet module_umd
+options head indent
+  (function(root, definition){
+    // CommonJS
+    if (typeof exports === "object") {
+    module.exports = definition();
+    // RequireJS
+    } else if (typeof define === "function" && define.amd) {
+    define(definition);
+    // <script>
+    } else {
+    ${1:ClassName} = definition();
     }
-    ${6:next_pointer}
-  }
+  })(this, function(){
+    'use strict';
+  
+    var $1 = {};
 
-snippet method_static_es6
-options indent
-  /**
-   * ${1:method_overview}
-   * ${2:@p_OR_@r}
-   * @method ${3:className}#${4:methodName}
-   */
-  static $4 (${5:param}){
-  }
+    ${2:functions} 
 
-snippet get_es6 
-options indent
-  /**
-   * ${1:method_overview}
-   * ${2:@p_OR_@r}
-   */
-  get ${3:methodName} (${4:param}){
-  }
-
-snippet set_es6 
-options indent
-  /**
-   * ${1:method_overview}
-   * ${2:@p_OR_@r}
-   */
-  set ${3:methodName} (${4:param}){
-  }
+    return $1;
+  });
