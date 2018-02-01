@@ -3,7 +3,7 @@
 
 # ******************************************
 # ES2015 snippet ***************************
-snippet module
+snippet module1
 options head indent
   /**
    * ${1:html_overview}
@@ -22,8 +22,13 @@ options head indent
    * @class ${2:ClassName}
    * @extends ${3:extends_class}
    */
-  export default class $2 $3 {
-    constructor (){
+  export default class $2 extends $3 {
+    /**
+     * コンストラクタ
+     * @param {${4:variable}} ${5:variableName} ${6:variableDiscription}
+     */
+    constructor ($5){
+      super();
       ${0}
     }
   }
@@ -106,11 +111,11 @@ options head indent
 # import
 snippet import_es2015_1
 options head indent
-  import ${2:variable} from "${1:module}";
+  import ${2:variable} from '${1:module}';
 
 snippet import_es2015_2
 options head indent
-  import * as namefrom "${1:module}";
+  import * as namefrom '${1:module}';
 
 # console and debugger
 snippet console.group
@@ -142,7 +147,7 @@ snippet const2
 snippet var2
   var ${1} = ${2:'$1'};
 
-snippet var3
+snippet var2
   var [${1}] = [${2:'$1'}];
 
 # promise
@@ -178,6 +183,15 @@ options head indent
 #  Promise.race(${1:PromiseName}).then(function(value) {
 #    ${2:script}
 #  });
+
+snippet map1
+  ${1:Array}.map( function ( value, key, object ) {
+    return ${2:script}
+  });
+  ${0}
+
+snippet isArray
+  Array.isArray( ${1:variable} )
 
 # generator
 snippet gen_function1
@@ -304,6 +318,13 @@ options head indent
   ${3:$script}
   });
 
+# native function
+snippet some
+options head indent
+  ${1:name}.some(function(${2:name} ,index,arr){
+  ${3:$script}
+  });
+
 snippet objectKeys
 options head indent
   Object.keys(${1:ObjectName}).forEach(function(key,value){
@@ -331,30 +352,30 @@ options head indent
 
 snippet isIE6
 options head indent
-  var isIE6 = (window.navigator.appVersion.toLowerCase().indexOf("msie 6.") !== -1)? true : false;
+  var isIE6 = (window.navigator.appVersion.toLowerCase().indexOf('msie 6.') !== -1)? true : false;
 
 snippet isIE7
 options head indent
-  var isIE7 = (window.navigator.appVersion.toLowerCase().indexOf("msie 7.") !== -1)? true : false;
+  var isIE7 = (window.navigator.appVersion.toLowerCase().indexOf('msie 7.') !== -1)? true : false;
 
 snippet isIE8
 options head indent
-  var isIE8 = (window.navigator.appVersion.toLowerCase().indexOf("msie 8.") !== -1)? true : false;
+  var isIE8 = (window.navigator.appVersion.toLowerCase().indexOf('msie 8.') !== -1)? true : false;
 
 snippet isIE9
 options head indent
-  var isIE9 = (window.navigator.appVersion.toLowerCase().indexOf("msie 9.") !== -1)? true : false;
+  var isIE9 = (window.navigator.appVersion.toLowerCase().indexOf('msie 9.') !== -1)? true : false;
 
 snippet isIE10
 options head indent
-  var isIE10 = (window.navigator.appVersion.toLowerCase().indexOf("msie 10.") !== -1)? true : false;
+  var isIE10 = (window.navigator.appVersion.toLowerCase().indexOf('msie 10.') !== -1)? true : false;
 
 snippet isIE11
 options head indent
   var isIE11 = (function(){
   var appVersion = window.navigator.appVersion;
   var isIE = (appVersion.match(/MSIE/) || appVersion.match(/Trident/))? true : false;
-  var hasRv = (window.navigator.appVersion.toLowerCase().indexOf("rv:11") !== -1)? true : false;
+  var hasRv = (window.navigator.appVersion.toLowerCase().indexOf('rv:11') !== -1)? true : false;
   return (isIE && hasRv);
   })();
 
@@ -416,6 +437,7 @@ options head indent
 # format
 snippet formatz
   /**
+   * 0詰めフォーマット
    * @param  {number} num  number or string
    * @param  {number} n  number of characters
    * @return {string} (In an error, 'false' is returned. )
@@ -430,10 +452,25 @@ snippet formatz
     default     : return false;
   }
   while(target_string.length < n){
-    target_string = "0" + target_string;
+    target_string = '0' + target_string;
   }
   return target_string;
   };
+
+
+# fragment
+snippet fragment
+    const _fragment = document.createDocumentFragment();
+
+    for(let cnt=0, max=${1:variable}.length; cnt<max; cnt++ ){
+        const item = document.createElement('${2:tagname}');
+        const text = document.createTextNode('${3:string}');
+        item.appendChild(song);
+        fragment.appendChild(item); // fragmentの追加する
+    }
+
+    ${4:element}.appendChild(fragment);
+    ${0}
 
 
 
@@ -468,36 +505,36 @@ snippet requirejs
 
 #ajax
 snippet ajaxo
-  var ajaxOptions = {
+  var ajaxOption = {
     url    : '${1:mydomain.com/url}',
     type   : '${2:POST}',
     dataType : '${3:xml/html/script/json}',
     data   : $.param( $('${4:Element or Expression}') ),
     beforeSend : function( xhr ) {
-     xhr.setRequestHeader("If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT");
+     xhr.setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00 GMT');
     },
     jsonpCallback : '${3:callback function name}'
   };
 
 snippet $ajax
-  var jqxhr = $.ajax( ajaxOptions  )
+  var jqxhr = $.ajax( ajaxOption  )
   .done( ${2:function} )
   .fail( ${3:function} )
   .always( ${4:function} );
 
 snippet $ajaxhtml
-  var ajaxOptions = {
+  var ajaxOption = {
     url    : '${1:mydomain.com/url}',
     type   : 'GET',
     dataType : 'html',
     data   : $.param( $('${2:Element or Expression}') ),
     beforeSend : function( xhr ) {
-     xhr.setRequestHeader("If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT");
+     xhr.setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00 GMT');
     },
     jsonpCallback : '${3:callback function name}'
   };
 
-  var jqxhr = $.ajax( ajaxOptions )
+  var jqxhr = $.ajax( ajaxOption )
   .done( function( responseText, textStatus, jqXHR ){
     var html = jQuery(document.createElement('div')).append( jQuery.parseHTML( responseText ) ).find( ${4:selecter} )
   })
@@ -507,18 +544,18 @@ snippet $ajaxhtml
 snippet $ajaxdfd
   var $dfd = $.Deferred();
 
-  var ajaxOptions = {
+  var ajaxOption = {
     url    : '${1:mydomain.com/url}',
     type   : '${2:POST}',
     dataType : '${3:xml/html/script/json}',
     data   : $.param( $('${4:Element or Expression}') ),
     beforeSend : function( xhr ) {
-     xhr.setRequestHeader("If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT");
+     xhr.setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00 GMT');
     },
     jsonpCallback : '${3:callback function name}'
   };
 
-  $.ajax( ajaxOptions ).done( function ( res, status, xhr ) {
+  $.ajax( ajaxOption ).done( function ( res, status, xhr ) {
     $dfd.resolve();
   }).fail(function () {
     $dfd.reject();
@@ -588,7 +625,7 @@ snippet _URL
 
   this.url = this.BASE_URL + '?';
 
-  var delimiter = "";
+  var delimiter = '';
   _.forEach( this.BASE_OPTION, function ( value, key, arr ) {
     _this.url += delimiter + key + '=' + value;
     delimiter = '&';
@@ -603,8 +640,7 @@ snippet _URL
 # file doc
 snippet @file
   /**
-   * @fileOverview ${1:overview_html}
-   *
+   * @file ${1:overview_html}
    * @author ${2:author}
    * @version ${3:version}
    */
@@ -636,7 +672,7 @@ snippet @method
    * @return {String} 表示用文章
    *
    * @example
-   * tiger.toString("：");
+   * tiger.toString('：');
    * 出力：「虎太郎：オス」
    *
    */
@@ -742,10 +778,10 @@ snippet module_umd
 options head indent
   (function(root, definition){
     // CommonJS
-    if (typeof exports === "object") {
+    if (typeof exports === 'object') {
     module.exports = definition();
     // RequireJS
-    } else if (typeof define === "function" && define.amd) {
+    } else if (typeof define === 'function' && define.amd) {
     define(definition);
     // <script>
     } else {
