@@ -50,6 +50,17 @@ snippet export_default_es2015_2
 options head indent
   export default {${1:variable or func or etc..}};
 
+snippet public_method
+options head indent
+  /**
+   * ${1:method_overview}
+   * ${2:@p_OR_@r}
+   * @method ${3:className}#${4:methodName}
+   */
+  $4 (${5:param}){
+    ${0}
+  }
+
 snippet static_method
 options head indent
   /**
