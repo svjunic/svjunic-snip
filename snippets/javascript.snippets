@@ -2,8 +2,8 @@
 # oirano snippet
 
 # ******************************************
-# ES2015 snippet ***************************
-snippet module1
+# ES5 snippet ******************************
+snippet class1
 options head indent
   /**
    * ${1:html_overview}
@@ -15,7 +15,7 @@ options head indent
     }
   }
 
-snippet module2
+snippet class2
 options head indent
   /**
    * ${1:html_overview}
@@ -112,10 +112,12 @@ options head indent
 snippet import_es2015_1
 options head indent
   import ${2:variable} from '${1:module}';
+  ${0}
 
 snippet import_es2015_2
 options head indent
-  import * as namefrom '${1:module}';
+  import * as name from '${1:module}';
+  ${0}
 
 # console and debugger
 snippet console.group
@@ -144,7 +146,7 @@ snippet const1
 snippet const2
   const [${1}] = [${2:'$1'}];
 
-snippet var2
+snippet var1
   var ${1} = ${2:'$1'};
 
 snippet var2
@@ -218,6 +220,53 @@ snippet next
 abbr /* console.log(gen.next());// { value: yieldValue, done: boolean } */
   ${1:generatorName}.next()
 
+# querySelector
+snippet querySelector
+abbr /* querySelector */
+  ${1:rootDom}.querySelector('${2:selector}');
+  ${0}
+
+snippet querySelectorAll
+abbr /* querySelectorAll */
+  ${1:rootDom}.querySelectorAll('${2:selector}');
+  ${0}
+
+snippet querySelectorAllEach
+abbr /* querySelectorAll(each) */
+  Array.prototype.forEach.apply(${1:rootDom}.querySelectorAll('${2:selector}')),()=>{
+    ${0}
+  });
+
+# fetch
+snippet fetch
+  fetch('${1:url}').then( res=>{
+    console.log( res );
+    ${0}
+  }).catch( err =>{
+    console.log(err);
+  });
+
+snippet fetchFull
+  fetch('${1:url}',{
+    method: '${2:get or post}',
+    headers: {
+      'content-type': 'application/json',
+      ${2:header}
+    },
+    body: JSON.stringify(${3:request body}),
+    credentials: '${3:include, same-origin, omit}',
+    chache: '${4:default, bypass, reload, revalidate, force-cache, offline}'
+  }).then(res => {
+     console.log(res.url, res.type, res.status);
+     if(res.headers.get('content-type') === 'application/json') {
+       res.json().then(json => console.log(json));
+      ${0}
+     } else {
+       // res.arrayBuffer();
+       // res.blob();
+       res.text().then(text => console.log(text));
+     }
+  }).catch(err => console.error(err));
 
 # ******************************************
 # javascript snippet(browser ) *************
@@ -473,33 +522,6 @@ snippet fragment
     ${0}
 
 
-
-# ******************************************
-# requirejs snippet ***************************
-
-snippet requirejs
-  var shim = {
-  '${1:plugin_extension}': {
-    deps: ['jquery'],
-    exports: '$'
-  }
-  };
-
-  var paths = {
-  '${2:extension}':'${3:path}',
-  };
-
-  var ${4:context} = require.config({
-  shim    : shim,
-  waitSeconds : ${5:number},
-  paths     : paths,
-  context   : '${6:context}'
-  });
-
-  ${7:context}( ['${8:extension}'], function( ${9:export_variable} ){
-  ${9:export_variable}.initialize();
-  });
-
 # ******************************************
 # jQuery snippet ***************************
 
@@ -536,7 +558,7 @@ snippet $ajaxhtml
 
   var jqxhr = $.ajax( ajaxOption )
   .done( function( responseText, textStatus, jqXHR ){
-    var html = jQuery(document.createElement('div')).append( jQuery.parseHTML( responseText ) ).find( ${4:selecter} )
+    var html = jQuery(document.createElement('div')).append( jQuery.parseHTML( responseText ) ).find( ${4:selector} )
   })
   .fail( ${5:function} )
   .always( ${6:function} );
