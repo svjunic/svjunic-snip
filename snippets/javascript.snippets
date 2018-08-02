@@ -671,9 +671,7 @@ snippet @file
 snippet @class
   /**
    * ${1:overview_html}
-   *
    * @class ${2:discription}
-   *
    * @param {${3:type}} ${4:name} ${5:discription}
    */
 
@@ -690,13 +688,12 @@ snippet @method
    * ${1:overview_html}
    *
    * @param {${2:type}} ${3:name} ${4:discription}
-   * @param {String} sep 分割表示用マーク
-   * @return {String} 表示用文章
+   * @return {${5:type}} ${6:name} ${7:discription}
    *
    * @example
+   * ${7:example}
    * tiger.toString('：');
    * 出力：「虎太郎：オス」
-   *
    */
 
 # method doc
@@ -710,7 +707,7 @@ snippet @type
 snippet @function
   /**
    * ${1:note}
-   * @param {${2:type}} ${3:name} - ${4:detail}
+   * @param {${2:type}} ${3:name} ${4:detail}
    */
 
 # jsdoc util
