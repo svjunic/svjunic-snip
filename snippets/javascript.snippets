@@ -736,11 +736,6 @@ snippet @file-full
    * @version ${3:version}
    */
 
-## fileOverview
-snippet @file
-options word
-  @file${1:name}
-
 # class
 snippet @class
   /**
@@ -790,12 +785,12 @@ snippet @function
 
 # jsdoc util
 ## file
-snippet @f
+snippet @file
 options word
   @file ${1:name}
 
 ## fire
-snippet @f
+snippet @fire
 options word
   @fire ${1:className}#${1:Event}
 
