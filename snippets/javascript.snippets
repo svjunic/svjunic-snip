@@ -310,10 +310,6 @@ snippet contains
 options word indent
   el !== ${1:childElmenet} && el.contains($1)${0}
 
-snippet filter
-options word indent
-  Array.prototype.filter.call(document.querySelectorAll(selector), filterFn);
-
 snippet parseHTML
 options head indent
   let parseHTML = function(str) {
@@ -733,7 +729,7 @@ snippet _URL
 # JSDOC ************************************
 
 # file
-snippet @file
+snippet @file-full
   /**
    * @file ${1:overview_html}
    * @author ${2:author}
@@ -741,7 +737,7 @@ snippet @file
    */
 
 ## fileOverview
-snippet @f
+snippet @file
 options word
   @file${1:name}
 
