@@ -2,14 +2,16 @@
 # oirano snippet
 
 # ******************************************
-# ES5 snippet ******************************
+# ES5,ES6 snippet **************************
 snippet class1
 options head indent
   /**
    * ${1:html_overview}
-   * @class ${2:ClassName}
+   * @class
+   * @classdesc ${2:description}
    */
   export default class $2 {
+    /** @constructs */
     constructor (){
       ${0}
     }
@@ -19,12 +21,14 @@ snippet class2
 options head indent
   /**
    * ${1:html_overview}
-   * @class ${2:ClassName}
+   * @class
+   * @classdesc ${2:description}
    * @extends ${3:extends_class}
    */
   export default class $2 extends $3 {
     /**
      * コンストラクタ
+     * @constructs
      * @param {${4:variable}} ${5:variableName} ${6:variableDiscription}
      */
     constructor ($5){
@@ -55,9 +59,18 @@ options head indent
   /**
    * ${1:method_overview}
    * ${2:@param, @return}
-   * @method ${3:className}#${4:methodName}
    */
-  $4 (${5:param}){
+  ${4:method_name} (${5:param}){
+    ${0}
+  }
+
+snippet handle_method
+options head indent
+  /**
+   * ${1:method_overview}
+   * @param {Event} e イベントオブジェクト
+   */
+  handle${2:method_name} (e){
     ${0}
   }
 
@@ -66,7 +79,6 @@ options head indent
   /**
    * ${1:method_overview}
    * ${2:@param, @return}
-   * @method ${3:className}#${4:methodName}
    */
   static $4 (${5:param}){
     ${0}
@@ -244,7 +256,7 @@ abbr /* querySelectorAll */
 
 snippet querySelectorAllEach
 abbr /* querySelectorAll(each) */
-  Array.prototype.forEach.apply(${1:rootDom}.querySelectorAll('${2:selector}'),()=>{
+  Array.prototype.forEach.call(${1:rootDom}.querySelectorAll('${2:selector}'),()=>{
     ${0}
   });
 
@@ -279,6 +291,37 @@ snippet fetchFull
      }
   }).catch(err => console.error(err));
 
+# object forEach
+snippet object_each
+  Object.keys(${1:object}).forEach((key)=>{
+      ${0} = $1[key]}
+    });
+
+# before/after
+snippet before
+options word indent
+  insertAdjacentHTML('beforebegin', ${0});
+
+snippet after
+options word indent
+  insertAdjacentHTML('afterend', ${0});
+
+snippet contains
+options word indent
+  el !== ${1:childElmenet} && el.contains($1)${0}
+
+snippet filter
+options word indent
+  Array.prototype.filter.call(document.querySelectorAll(selector), filterFn);
+
+snippet parseHTML
+options head indent
+  let parseHTML = function(str) {
+    let tmp = document.implementation.createHTMLDocument();
+    tmp.body.innerHTML = str;
+    return tmp.body.children;
+  };
+  parseHTML(${0});
 
 # ******************************************
 # ESLint ***********************************
@@ -293,6 +336,10 @@ options head indent
 snippet eslint-disable-line
 options word indent
   // eslint-disable-line
+
+snippet eslint-debugger
+options word indent
+  debugger; // eslint-disable-line
 
 # ******************************************
 # javascript snippet(browser ) *************
@@ -685,7 +732,7 @@ snippet _URL
 # ******************************************
 # JSDOC ************************************
 
-# file doc
+# file
 snippet @file
   /**
    * @file ${1:overview_html}
@@ -693,36 +740,45 @@ snippet @file
    * @version ${3:version}
    */
 
-# class doc
+## fileOverview
+snippet @f
+options word
+  @file${1:name}
+
+# class
 snippet @class
   /**
    * ${1:overview_html}
-   * @class ${2:discription}
-   * @param {${3:type}} ${4:name} ${5:discription}
+   * @class
+   * @param {${2:type}} ${3:name} ${4:discription}
    */
 
-# member doc
+# member
 snippet @member
   /**
    * ${1:overview_html}
    * @member {${2:type}}
    */
 
-# method doc
+# constructor
+snippet @constructor
+options word
+  @constructs
+
+# method
 snippet @method
   /**
    * ${1:overview_html}
    *
    * @param {${2:type}} ${3:name} ${4:discription}
    * @return {${5:type}} ${6:name} ${7:discription}
-   *
    * @example
    * ${7:example}
    * tiger.toString('：');
    * 出力：「虎太郎：オス」
    */
 
-# method doc
+# method
 snippet @type
   /**
    * ${1:overview_html}
@@ -739,105 +795,123 @@ snippet @function
 # jsdoc util
 ## file
 snippet @f
+options word
   @file ${1:name}
 
-## fileOverview
-snippet @fo
-  @fileOverview ${1:name}
+## fire
+snippet @f
+options word
+  @fire ${1:className}#${1:Event}
 
 ## author
 snippet @a
+options word
   @author ${1:name}
 
 ## class
 snippet @c
+options word
   @class ${1:name}
 
 ## version
 snippet @v
+options word
   @version ${1:version}
 
 ## callback
 snippet @cb
+options word
   @callback {Boolean} ${1:name} ${2:discription}
 
 ## param
 snippet @pb
+options word
   @param {Boolean} ${1:name} ${2:discription}
 
 snippet @pn
+options word
   @param {Number} ${1:name} ${2:discription}
 
 snippet @ps
+options word
   @param {String} ${1:name} ${2:discription}
 
 snippet @po
+options word
   @param {Object} ${1:name} ${2:discription}
+
+snippet @pe
+options word
+  @param {Event} e ${1:EventObject}
 
 ## return
 snippet @rb
+options word
   @return {Boolean} ${1:name} ${2:discription}
 
 snippet @rn
+options word
   @return {Number} ${1:name} ${2:discription}
 
 snippet @rs
+options word
   @return {String} ${1:name} ${2:discription}
 
 snippet @ro
+options word
   @return {Object} ${1:name} ${2:discription}
 
 
 
-# module CommonJS
-snippet vrequire
-options head indent
-  var ${1:name} = require('${2:MoDuleName}');
-
-snippet cexport1
-options head indent
-  module.exports = ${1:object or function};
-
-snippet cexport2
-options head indent
-  module.exports = {
-  ${1:name} : ${2:object or function}
-  };
-
-snippet cexport3
-options head indent
-  exports = {
-  ${1:name} : ${2:object or function}
-  };
-
-snippet cexportm
-options head indent
-  function ${1:name}(){
-  ${2:script}
-  }
-  module.exports = $1;
-
-
-# module UMD
-snippet module_umd
-options head indent
-  (function(root, definition){
-    // CommonJS
-    if (typeof exports === 'object') {
-    module.exports = definition();
-    // RequireJS
-    } else if (typeof define === 'function' && define.amd) {
-    define(definition);
-    // <script>
-    } else {
-    ${1:ClassName} = definition();
-    }
-  })(this, function(){
-    'use strict';
-  
-    var $1 = {};
-
-    ${2:functions} 
-
-    return $1;
-  });
+# # module CommonJS
+# snippet vrequire
+# options head indent
+#   var ${1:name} = require('${2:MoDuleName}');
+# 
+# snippet cexport1
+# options head indent
+#   module.exports = ${1:object or function};
+# 
+# snippet cexport2
+# options head indent
+#   module.exports = {
+#   ${1:name} : ${2:object or function}
+#   };
+# 
+# snippet cexport3
+# options head indent
+#   exports = {
+#   ${1:name} : ${2:object or function}
+#   };
+# 
+# snippet cexportm
+# options head indent
+#   function ${1:name}(){
+#   ${2:script}
+#   }
+#   module.exports = $1;
+#
+#
+# # module UMD
+# snippet module_umd
+# options head indent
+#   (function(root, definition){
+#     // CommonJS
+#     if (typeof exports === 'object') {
+#     module.exports = definition();
+#     // RequireJS
+#     } else if (typeof define === 'function' && define.amd) {
+#     define(definition);
+#     // <script>
+#     } else {
+#     ${1:ClassName} = definition();
+#     }
+#   })(this, function(){
+#     'use strict';
+#   
+#     var $1 = {};
+# 
+#     ${2:functions} 
+# 
+#     return $1;
+#   });
