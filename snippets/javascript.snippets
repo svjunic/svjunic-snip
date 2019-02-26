@@ -210,13 +210,26 @@ options head indent
 #  });
 
 snippet map1
-  ${1:Array}.map( function ( value, key, object ) {
+  .map( function ( value, key, object ) {
     return ${2:script}
   });
   ${0}
 
+snippet filter
+  .map( function ( value, key, object ) {
+    return ${2:script}
+  })
+  ${0}
+
+snippet unique
+  .filter(function (x, i, self) {
+    return self.indexOf(x) === i;
+  })
+  ${0}
+
 snippet isArray
-  Array.isArray( ${1:variable} )
+  .isArray( ${1:variable} )
+  ${0}
 
 # generator
 snippet gen_function1
@@ -336,6 +349,21 @@ options word indent
 snippet eslint-debugger
 options word indent
   debugger; // eslint-disable-line
+
+# ******************************************
+# prettier ***********************************
+snippet prettier-ignore
+options head indent
+  /* prettier-ignore */
+
+snippet prettier-ignore-start
+options head indent
+  /* prettier-ignore-start */
+
+snippet prettier-ignore-end
+options head indent
+  /* prettier-ignore-end */
+
 
 # ******************************************
 # javascript snippet(browser ) *************
@@ -589,6 +617,44 @@ snippet fragment
 
     ${4:element}.appendChild(fragment);
     ${0}
+
+snippet xmlhttp
+options head indent
+  var xhr = new XMLHttpRequest();
+  
+  // ハンドラの登録.
+  xhr.onreadystatechange = function() {
+    switch ( xhr.readyState ) {
+      case 0:
+        // 未初期化状態.
+        console.log( 'uninitialized!' );
+        break;
+      case 1: // データ送信中.
+        console.log( 'loading...' );
+        break;
+      case 2: // 応答待ち.
+        console.log( 'loaded.' );
+        break;
+      case 3: // データ受信中.
+        console.log( 'interactive... '+xhr.responseText.length+' bytes.' );
+        break;
+      case 4: // データ受信完了.
+        if( xhr.status == 200 || xhr.status == 304 ) {
+          var data = xhr.responseText; // responseXML もあり
+          console.log( 'COMPLETE! :'+data );
+        } else {
+          console.log( 'Failed. HttpStatus: '+xhr.statusText );
+        }
+        break;
+    }
+  };
+
+  xhr.open( 'POST', 'http://{送信先URL}/post.php', false );
+  // POST 送信の場合は Content-Type は固定.
+  xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+  // 
+  xhr.send( 'hoge=piyo&moge=fuga' );
+  xhr.abort(); // 再利用する際にも abort() しないと再利用できないらしい.
 
 
 # ******************************************
