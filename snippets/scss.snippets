@@ -39,6 +39,23 @@ options head indent
     flex: ${11:none} $8 $9 $10;
   }
 
+snippet media
+options head indent
+  @media screen and (max-width: ${1}px) {
+  }
+
+snippet media_1
+options head indent
+  @media screen and (max-width: 374px) {
+    .entry table td {
+      font-size: 12px;
+    }
+  }
+
+snippet media_2
+options head indent
+  @media screen and (max-width: 320px) {
+  }
 
 snippet transition
 options head indent
