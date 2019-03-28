@@ -306,9 +306,10 @@ snippet fetchFull
 
 # object forEach
 snippet object_each
+options head indent
   Object.keys(${1:object}).forEach((key)=>{
       ${0} = $1[key]}
-    });
+  });
 
 # before/after
 snippet before
