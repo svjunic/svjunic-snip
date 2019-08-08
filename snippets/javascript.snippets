@@ -202,12 +202,11 @@ options head indent
     ${3:error or reject}
   });
 
-# ちょい早い
-#snippet promiserace
-#options head indent
-#  Promise.race(${1:PromiseName}).then(function(value) {
-#    ${2:script}
-#  });
+snippet promiserace
+options head indent
+  Promise.race(${1:PromiseName}).then(function(value) {
+    ${2:script}
+  });
 
 snippet map1
   .map( function ( value, key, object ) {
@@ -332,6 +331,18 @@ options head indent
     return tmp.body.children;
   };
   parseHTML(${0});
+
+snippet settimeout
+options head word indent
+  setTimeout( ()=>{
+    ${2}
+  },${1});
+
+snippet settimeout-return
+options head word indent
+  const timeid = setTimeout( ()=>{
+    ${2}
+  },${1});
 
 # ******************************************
 # ESLint ***********************************
