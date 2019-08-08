@@ -202,11 +202,20 @@ options head indent
     ${3:error or reject}
   });
 
-snippet promiserace
+snippet promise_race
 options head indent
   Promise.race(${1:PromiseName}).then(function(value) {
     ${2:script}
   });
+
+snippet await_promise_scripting_delay
+options head indent
+   await new Promise(function(resolve) {
+     setTimeout(() => {
+       resolve();
+     }, 0);
+   });
+   ${0}
 
 snippet map1
   .map( function ( value, key, object ) {
@@ -337,12 +346,14 @@ options head word indent
   setTimeout( ()=>{
     ${2}
   },${1});
+  ${0}
 
 snippet settimeout-return
 options head word indent
   const timeid = setTimeout( ()=>{
     ${2}
   },${1});
+  ${0}
 
 # ******************************************
 # ESLint ***********************************
