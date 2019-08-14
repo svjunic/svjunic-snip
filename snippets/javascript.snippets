@@ -218,25 +218,25 @@ options head indent
    ${0}
 
 snippet map1
-  .map( function ( value, key, object ) {
+  map( function ( value, key, object ) {
     return ${2:script}
   });
   ${0}
 
 snippet filter
-  .filter( function ( value, key, object ) {
+  filter( function ( value, key, object ) {
     return ${2:script}
   })
   ${0}
 
 snippet unique
-  .filter(function (x, i, self) {
+  filter(function (x, i, self) {
     return self.indexOf(x) === i;
   })
   ${0}
 
 snippet isArray
-  .isArray( ${1:variable} )
+  isArray( ${1:variable} )
   ${0}
 
 # generator
