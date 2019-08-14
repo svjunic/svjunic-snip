@@ -799,8 +799,9 @@ snippet _URL
 
 
 # ******************************************
-# JSDOC ************************************
-snippet class1
+# Vue  *************************************
+snippet vue_orthodox
+abbr vue_orthodox
 options head indent
   export default function(store, _root) {
     new Vue({
@@ -872,7 +873,8 @@ options head indent
 # JSDOC ************************************
 
 # file
-snippet @file-full
+snippet doc_file-full
+abbr jsdoc file fullset
   /**
    * @file ${1:overview_html}
    * @author ${2:author}
@@ -880,7 +882,8 @@ snippet @file-full
    */
 
 # class
-snippet @class
+snippet doc_class
+abbr jsdoc class fullset
   /**
    * ${1:overview_html}
    * @class
@@ -888,19 +891,22 @@ snippet @class
    */
 
 # member
-snippet @member
+snippet doc_member
+abbr jsdoc member fullset
   /**
    * ${1:overview_html}
    * @member {${2:type}}
    */
 
 # constructor
-snippet @constructor
+snippet doc_constructor
+abbr jsdoc constructor
 options word
   @constructs
 
 # method
-snippet @method
+snippet doc_method
+abbr jsdoc method
   /**
    * ${1:overview_html}
    *
@@ -913,14 +919,16 @@ snippet @method
    */
 
 # method
-snippet @type
+snippet doc_type
+abbr jsdoc type
   /**
    * ${1:overview_html}
    * @type {${2:type}}
    */
 
 # method function
-snippet @function
+snippet doc_function
+abbr jsdoc function
   /**
    * ${1:note}
    * @param {${2:type}} ${3:name} ${4:detail}
@@ -928,70 +936,85 @@ snippet @function
 
 # jsdoc util
 ## file
-snippet @file
+snippet doc_file
+abbr jsdoc file
 options word
   @file ${1:name}
 
 ## fire
-snippet @fire
+snippet doc_fire
+abbr jsdoc fire
 options word
   @fire ${1:className}#${1:Event}
 
 ## author
-snippet @a
+snippet doc_a
+abbr jsdoc author
 options word
   @author ${1:name}
 
 ## class
-snippet @c
+snippet doc_c
+abbr jsdoc class
 options word
   @class ${1:name}
 
 ## version
-snippet @v
+snippet doc_v
+abbr jsdoc version
 options word
   @version ${1:version}
 
 ## callback
-snippet @cb
+snippet doc_cb
+abbr jsdoc callback
 options word
   @callback {Boolean} ${1:name} ${2:discription}
 
 ## param
-snippet @pb
+snippet doc_pb
+abbr jsdoc param boolean
 options word
   @param {Boolean} ${1:name} ${2:discription}
 
-snippet @pn
+snippet doc_pn
+abbr jsdoc param number
 options word
   @param {Number} ${1:name} ${2:discription}
 
-snippet @ps
+snippet doc_ps
+abbr jsdoc param string
 options word
   @param {String} ${1:name} ${2:discription}
 
-snippet @po
+snippet doc_po
+abbr jsdoc param object
 options word
   @param {Object} ${1:name} ${2:discription}
 
-snippet @pe
+snippet doc_pe
+abbr jsdoc param event
 options word
   @param {Event} e ${1:EventObject}
 
 ## return
-snippet @rb
+snippet doc_rb
+abbr jsdoc return boolean
 options word
   @return {Boolean} ${1:name} ${2:discription}
 
-snippet @rn
+snippet doc_rn
+abbr jsdoc return number
 options word
   @return {Number} ${1:name} ${2:discription}
 
-snippet @rs
+snippet doc_rs
+abbr jsdoc return string
 options word
   @return {String} ${1:name} ${2:discription}
 
-snippet @ro
+snippet doc_ro
+abbr jsdoc return object
 options word
   @return {Object} ${1:name} ${2:discription}
 
