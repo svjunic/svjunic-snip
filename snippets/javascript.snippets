@@ -756,9 +756,9 @@ snippet funcZeroPadding
 abbr funcZeroPadding
   /**
    * 0詰めフォーマット
-   * @param  {number} num  number or string
-   * @param  {number} n  number of characters
-   * @return {string} (In an error, 'false' is returned. )
+   * @param  {Number} num  number or string
+   * @param  {Number} n  number of characters
+   * @return {String} (In an error, 'false' is returned. )
    */
   function zeroPadding(num, n) {
     var target_string;
@@ -776,11 +776,16 @@ abbr funcZeroPadding
   };
 
 # NumberDelimitter
-snippet funcNumberDelimitter
-abbr funcNumberDelimitter
-  function numberDelimitter(num) {
-    //return String(number).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
-    return number.toLocaleString('ja-JP')
+snippet funcNumberDelimiter
+abbr funcNumberDelimiter
+  /**
+    * 価格の区切り文字を挿入したstringを返す
+    * @param {Number} num 数値（interger）
+    */
+  function numberDelimiter(num) {
+    // ES2018 まだ早い
+    //return String(num).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+    return num.toLocaleString('ja-JP')
   }
 
 # fragment
