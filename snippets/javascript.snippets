@@ -760,21 +760,28 @@ abbr funcZeroPadding
    * @param  {number} n  number of characters
    * @return {string} (In an error, 'false' is returned. )
    */
-  fncZeroFormat = function(num, n) {
-  var target_string;
-  switch (typeof num) {
-    case 'string' : target_string = num;
-            break;
-    case 'number' : target_string = num.toString();
-            break;
-    default     : return false;
-  }
-  while(target_string.length < n){
-    target_string = '0' + target_string;
-  }
-  return target_string;
+  function zeroPadding(num, n) {
+    var target_string;
+    switch (typeof num) {
+      case 'string' : target_string = num;
+              break;
+      case 'number' : target_string = num.toString();
+              break;
+      default     : return false;
+    }
+    while(target_string.length < n){
+      target_string = '0' + target_string;
+    }
+    return target_string;
   };
 
+# NumberDelimitter
+snippet funcNumberDelimitter
+abbr funcNumberDelimitter
+  function numberDelimitter(num) {
+    //return String(number).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+    return number.toLocaleString('ja-JP')
+  }
 
 # fragment
 snippet fragment
