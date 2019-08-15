@@ -442,15 +442,10 @@ snippet eslint-debugger
 options word indent
   debugger; // eslint-disable-line
 
-snippet eslint-specifying-globals1
+snippet eslint-specifying-globals
 abbr eslit Specifying Globals
 options head indent
-  /* global ${1:var1, var2, ...} */
-
-snippet eslint-specifying-globals1
-abbr eslit Specifying Globals
-options head indent
-  /* global ${1:var1:writable, var2:readonly, ...} */
+  /* global ${1: var1, var2, var3:writable, var4:readonly, ...} */
 
 
 # ******************************************
