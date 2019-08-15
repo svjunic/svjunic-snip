@@ -4,6 +4,7 @@
 # ******************************************
 # ES5,ES6 snippet **************************
 snippet class1
+abbr export default class
 options head indent
   /**
    * ${1:html_overview}
@@ -18,6 +19,7 @@ options head indent
   }
 
 snippet class2
+abbr export default class extends
 options head indent
   /**
    * ${1:html_overview}
@@ -65,6 +67,7 @@ options head indent
   }
 
 snippet handle_method
+abbr handler set
 options head indent
   /**
    * ${1:method_overview}
@@ -75,6 +78,7 @@ options head indent
   }
 
 snippet static_method
+abbr static method set
 options head indent
   /**
    * ${1:method_overview}
@@ -91,8 +95,15 @@ options word
     ${0}
   }
 
+snippet func_es2015_2
+options word
+  function ${1:functionName}({${2:variable or variable=defaultValue}}) {
+    ${0}
+  }
+
 # arrow function
-snippet =>
+snippet func_arrow
+abbr arrow function
 options word
   (${1:VariableData}) => {
     ${0}
@@ -100,12 +111,14 @@ options word
 
 # getter
 snippet get-normal
+abbr getter
 options head indent
   get ${1:methodName} (){
     ${0}
   }
 
 snippet get-static
+abbr static getter
 options head indent
   /**
    * ${1:method_overview}
@@ -122,6 +135,7 @@ options indent
   }
 
 snippet set-static
+abbr setter
 options head indent
   /**
    * ${1:method_overview}
@@ -133,50 +147,62 @@ options head indent
 
 # import
 snippet import_es2015_1
+abbr import_es2015_1
 options head indent
   import ${2:variable} from '${1:module}';
   ${0}
 
 snippet import_es2015_2
+abbr import_es2015_2
 options head indent
   import * as name from '${1:module}';
   ${0}
 
 # console and debugger
-snippet console.group
+snippet clg
+abbr console.group set
   console.group(${1:object});
   ${2:script}
   console.groupEnd($1);
 
 snippet console.groupCollapsed
+abbr console.groupCollapsed set
   console.groupCollapsed(${1:object});
   ${2:script}
   console.groupEnd($1);
 
-snippet debugger
+snippet de
+abbr debugger
   debugger;
 
 # statements
 snippet let1
+abbr let1
   let ${1} = ${2:'$1'};
 
 snippet let2
+abbr let2
   let [${1}] = [${2:'$1'}];
 
 snippet const1
+abbr const1
   const ${1} = ${2:'$1'};
 
 snippet const2
+abbr const2
   const [${1}] = [${2:'$1'}];
 
 snippet var1
+abbr var1
   var ${1} = ${2:'$1'};
 
 snippet var2
+abbr var2
   var [${1}] = [${2:'$1'}];
 
 # promise
 snippet promise1_fullset
+abbr promise1_fullset
   ${1:PromiseName} = new Promise(function(resolve, reject){
     resolve(${2:VariableData}); 
   });
@@ -189,11 +215,13 @@ snippet promise1_fullset
   });
 
 snippet promise2_promise_only
+abbr promise2_promise_only
   ${1:PromiseName} = new Promise(function(resolve, reject){
     resolve(${2:VariableData}); 
   });
 
 snippet promise_all
+abbr promise all
 options head indent
   Promise.all(${1:PromiseName}).then(function(value) {
     ${2:done}
@@ -203,12 +231,14 @@ options head indent
   });
 
 snippet promise_race
+abbr promise race
 options head indent
   Promise.race(${1:PromiseName}).then(function(value) {
     ${2:script}
   });
 
 snippet await_promise_scripting_delay
+abbr await promise
 options head indent
    await new Promise(function(resolve) {
      setTimeout(() => {
@@ -218,29 +248,34 @@ options head indent
    ${0}
 
 snippet map1
+abbr array map
   map( function ( value, key, object ) {
     return ${2:script}
   });
   ${0}
 
 snippet filter
+abbr array filter
   filter( function ( value, key, object ) {
     return ${2:script}
   })
   ${0}
 
 snippet unique
+abbr array filter(unique)
   filter(function (x, i, self) {
     return self.indexOf(x) === i;
   })
   ${0}
 
 snippet isArray
-  isArray( ${1:variable} )
+abbr isArray
+  Array.isArray( ${1:variable} )
   ${0}
 
 # generator
 snippet gen_function1
+abbr gen_function1
 options head indent
   function* ${1}($2) {
     yield ${3};
@@ -248,7 +283,7 @@ options head indent
   let ${4:generatorName} = $1();
 
 snippet gen_function2_while_sample
-abbr /* count up sample */
+abbr gen_function sample
 options head indent
   function* ${1}($2) {
     let i = 1;
@@ -283,6 +318,7 @@ abbr /* querySelectorAll(each) */
 
 # fetch
 snippet fetch
+abbr fetch set
   fetch('${1:url}').then( res=>{
     console.log( res );
     ${0}
@@ -291,6 +327,7 @@ snippet fetch
   });
 
 snippet fetchFull
+abbr fetch full set
   fetch('${1:url}',{
     method: '${2:get or post}',
     headers: {
@@ -314,25 +351,39 @@ snippet fetchFull
 
 # object forEach
 snippet object_each
+abbr object forEach
 options head indent
   Object.keys(${1:object}).forEach((key)=>{
       ${0} = $1[key]}
   });
 
 # before/after
-snippet before
+snippet before1
+abbr before(insertAdjacentHTML)
 options word indent
-  insertAdjacentHTML('beforebegin', ${0});
+  insertAdjacentHTML('beforebegin', ${0:node or string});
 
-snippet after
+snippet before2
+abbr before(native code)
 options word indent
-  insertAdjacentHTML('afterend', ${0});
+  before(${0:node or string});
+
+snippet after1
+abbr after(insertAdjacentHTML)
+options word indent
+  insertAdjacentHTML('afterend', ${0:node or string});
+
+snippet after2
+abbr after(native code)
+options word indent
+  after(${0:node or string});
 
 snippet contains
 options word indent
   el !== ${1:childElmenet} && el.contains($1)${0}
 
 snippet parseHTML
+abbr parseHTML
 options head indent
   let parseHTML = function(str) {
     let tmp = document.implementation.createHTMLDocument();
@@ -341,16 +392,34 @@ options head indent
   };
   parseHTML(${0});
 
-snippet settimeout
+snippet setTimeout1
+abbr setTimeout set(arrow function)
 options head word indent
   setTimeout( ()=>{
     ${2}
   },${1});
   ${0}
 
-snippet settimeout-return
+snippet setTimeout2
+abbr setTimeout set(function)
+options head word indent
+  setTimeout( function(){
+    ${2}
+  },${1});
+  ${0}
+
+snippet settimeout1-return
+abbr timerid + setTimeout set(arrow function)
 options head word indent
   const timeid = setTimeout( ()=>{
+    ${2}
+  },${1});
+  ${0}
+
+snippet settimeout2-return
+abbr timerid + setTimeout set(function)
+options head word indent
+  const timeid = setTimeout( function(){
     ${2}
   },${1});
   ${0}
@@ -683,7 +752,8 @@ options head indent
   };
 
 # format
-snippet formatz
+snippet funcZeroPadding
+abbr funcZeroPadding
   /**
    * 0詰めフォーマット
    * @param  {number} num  number or string
@@ -708,6 +778,7 @@ snippet formatz
 
 # fragment
 snippet fragment
+abbr fragment set
     const _fragment = document.createDocumentFragment();
 
     for(let cnt=0, max=${1:variable}.length; cnt<max; cnt++ ){
