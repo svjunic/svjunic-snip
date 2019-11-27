@@ -1,137 +1,103 @@
 # https://github.com/Shougo/neosnippet-snippets/blob/master/neosnippets/vue.snip
 
-snippet     scaffold
-options     head
-abbr        Scaffold <template> <script> and <style>
-     <template>
-       ${0}
-     </template>
-
-     <script>
-     export default {
-     }
-     </script>
-
-     <style>
-
-     </style>
-
-snippet     template_with_html
-options     head
-abbr        Scaffold <template> with html
-     <template>
-       ${0}
-     </template>
-
-snippet     template_with_pug
-options     head
-abbr        Scaffold <template> with pug
-     <template lang="pug">
-       ${0}
-     </template>
-
-snippet     script_with_JavaScript
-options     head
-abbr        Scaffold <script> with JavaScript
-     <script>
-     export default {
-       ${0}
-     }
-     </script>
-
-snippet     script_with_TypeScript
-options     head
-abbr        Scaffold <script> with TypeScript
-     <script lang="ts">
-     import Vue from 'vue'
-     export default Vue.extend({
-       ${0}
-     })
-     </script>
-
-snippet     style_with_CSS
-options     head
-abbr        Scaffold <style> with CSS
-     <style>
+snippet   scaffold
+   <template>
      ${0}
-     </style>
+   </template>
 
-snippet     style_with_CSS_scoped
-options     head
-abbr        Scaffold <style> with CSS scoped
-     <style scoped>
-     ${0}
-     </style>
+   <script>
+   export default {
+   }
+   </script>
 
-snippet     style_with_scss
-options     head
-abbr        Scaffold <style> with scss
-     <style lang="scss">
-     ${0}
-     </style>
+   <style>
 
-snippet     style_with_scss_scoped
-options     head
-abbr        Scaffold <style> with scss scoped
-     <style lang="scss" scoped>
-     ${0}
-     </style>
+   </style>
 
-snippet     style_with_less
-options     head
-abbr        Scaffold <style> with less
-     <style lang="less">
+snippet   template_with_html
+   <template>
      ${0}
-     </style>
+   </template>
 
-snippet     style_with_less_scoped
-options     head
-abbr        Scaffold <style> with less scoped
-     <style lang="less" scoped>
+snippet   template_with_pug
+   <template lang="pug">
      ${0}
-     </style>
+   </template>
 
-snippet     style_with_sass
-options     head
-abbr        Scaffold <style> with sass
-     <style lang="sass">
+snippet   script_with_JavaScript
+   <script>
+   export default {
      ${0}
-     </style>
+   }
+   </script>
 
-snippet     style_with_sass_scoped
-options     head
-abbr        Scaffold <style> with sass scoped
-     <style lang="sass" scoped>
+snippet   script_with_TypeScript
+   <script lang="ts">
+   import Vue from 'vue'
+   export default Vue.extend({
      ${0}
-     </style>
+   })
+   </script>
 
-snippet     style_with_postcss
-options     head
-abbr        Scaffold <style> with postcss
-     <style lang="postcss">
-     ${0}
-     </style>
+snippet   style_with_CSS
+   <style>
+   ${0}
+   </style>
 
-snippet     style_with_postcss_scoped
-options     head
-abbr        Scaffold <style> with postcss scoped
-     <style lang="postcss" scoped>
-     ${0}
-     </style>
+snippet   style_with_CSS_scoped
+   <style scoped>
+   ${0}
+   </style>
 
-snippet     style_with_stylus
-options     head
-abbr        Scaffold <style> with stylus
-     <style lang="stylus">
-     ${0}
-     </style>
+snippet   style_with_scss
+   <style lang="scss">
+   ${0}
+   </style>
 
-snippet     style_with_stylus_scoped
-options     head
-abbr        Scaffold <style> with stylus scoped
-     <style lang="stylus" scoped>
-     ${0}
-     </style>
+snippet   style_with_scss_scoped
+   <style lang="scss" scoped>
+   ${0}
+   </style>
+
+snippet   style_with_less
+   <style lang="less">
+   ${0}
+   </style>
+
+snippet   style_with_less_scoped
+   <style lang="less" scoped>
+   ${0}
+   </style>
+
+snippet   style_with_sass
+   <style lang="sass">
+   ${0}
+   </style>
+
+snippet   style_with_sass_scoped
+   <style lang="sass" scoped>
+   ${0}
+   </style>
+
+snippet   style_with_postcss
+   <style lang="postcss">
+   ${0}
+   </style>
+
+snippet   style_with_postcss_scoped
+   <style lang="postcss" scoped>
+   ${0}
+   </style>
+
+snippet   style_with_stylus
+   <style lang="stylus">
+   ${0}
+   </style>
+
+snippet   style_with_stylus_scoped
+   <style lang="stylus" scoped>
+   ${0}
+   </style>
 
 # ******************************************
 # ここからJSと同じ
@@ -140,23 +106,19 @@ abbr        Scaffold <style> with stylus scoped
 # ******************************************
 # ES5,ES6 snippet **************************
 snippet class1
-abbr export default class
-options head indent
   /**
    * ${1:html_overview}
    * @class
    * @classdesc ${2:description}
    */
   export default class $2 {
-    /** @constructs */
-    constructor (){
-      ${0}
-    }
+  /** @constructs */
+  constructor (){
+    ${0}
+  }
   }
 
 snippet class2
-abbr export default class extends
-options head indent
   /**
    * ${1:html_overview}
    * @class
@@ -164,442 +126,356 @@ options head indent
    * @extends ${3:extends_class}
    */
   export default class $2 extends $3 {
-    /**
-     * コンストラクタ
-     * @constructs
-     * @param {${4:variable}} ${5:variableName} ${6:variableDiscription}
-     */
-    constructor ($5){
-      super();
-      ${0}
-    }
+  /**
+   * コンストラクタ
+   * @constructs
+   * @param {${4:variable}} ${5:variableName} ${6:variableDiscription}
+   */
+  constructor ($5){
+    super();
+    ${0}
+  }
   }
 
 # export
 snippet export_es2015_1
-options head indent
   export ${1:variable or func or etc..};
 
 snippet export_es2015_2
-options head indent
   export {${1:variable or func or etc..}};
 
 snippet export_default_es2015_1
-options head indent
   export default ${1:variable or func or etc..};
 
 snippet export_default_es2015_2
-options head indent
   export default {${1:variable or func or etc..}};
 
 snippet public_method
-options head indent
   /**
    * ${1:method_overview}
    * ${2:@param, @return}
    */
   ${4:method_name} (${5:param}){
-    ${0}
+  ${0}
   }
 
 snippet handle_method
-abbr handler set
-options head indent
   /**
    * ${1:method_overview}
    * @param {Event} e イベントオブジェクト
    */
   handle${2:method_name} (e){
-    ${0}
+  ${0}
   }
 
 snippet static_method
-abbr static method set
-options head indent
   /**
    * ${1:method_overview}
    * ${2:@param, @return}
    */
   static $4 (${5:param}){
-    ${0}
+  ${0}
   }
 
 # function
 snippet func_es2015
-options word
   function ${1:functionName}(${2:variable or variable=defaultValue}) {
-    ${0}
+  ${0}
   }
 
 snippet func_es2015_2
-options word
   function ${1:functionName}({${2:variable or variable=defaultValue}}) {
-    ${0}
+  ${0}
   }
 
 # arrow function
 snippet func_arrow
-abbr arrow function
-options word
   (${1:VariableData}) => {
-    ${0}
+  ${0}
   }
 
 # getter
 snippet get-normal
-abbr getter
-options head indent
   get ${1:methodName} (){
-    ${0}
+  ${0}
   }
 
 snippet get-static
-abbr static getter
-options head indent
   /**
    * ${1:method_overview}
    */
   static get ${3:methodName} (${4:param}){
-    ${0}
+  ${0}
   }
 
 # setter
 snippet set-normal
-options indent
   set ${3:MethodName} (${4:param}){
-    ${0}
+  ${0}
   }
 
 snippet set-static
-abbr setter
-options head indent
   /**
    * ${1:method_overview}
    * ${2:@param, @return}
    */
   static set ${3:methodName} (${4:param}){
-    ${0}
+  ${0}
   }
 
 # import
 snippet import_es2015_1
-abbr import_es2015_1
-options head indent
   import ${2:variable} from '${1:module}';
   ${0}
 
 snippet import_es2015_2
-abbr import_es2015_2
-options head indent
   import * as name from '${1:module}';
   ${0}
 
 # console and debugger
 snippet clg
-abbr console.group set
   console.group(${1:object});
   ${2:script}
   console.groupEnd($1);
 
 snippet console.groupCollapsed
-abbr console.groupCollapsed set
   console.groupCollapsed(${1:object});
   ${2:script}
   console.groupEnd($1);
 
 snippet de
-abbr debugger
   debugger;
 
 # statements
 snippet let1
-abbr let1
   let ${1} = ${2:'$1'};
 
 snippet let2
-abbr let2
   let [${1}] = [${2:'$1'}];
 
 snippet const1
-abbr const1
   const ${1} = ${2:'$1'};
 
 snippet const2
-abbr const2
   const [${1}] = [${2:'$1'}];
 
 snippet var1
-abbr var1
   var ${1} = ${2:'$1'};
 
 snippet var2
-abbr var2
   var [${1}] = [${2:'$1'}];
 
 # promise
 snippet promise1_fullset
-abbr promise1_fullset
   ${1:PromiseName} = new Promise(function(resolve, reject){
-    resolve(${2:VariableData}); 
+  resolve(${2:VariableData}); 
   });
 
   $1.then(function(data) {
-    ${3:done}
+  ${3:done}
   })
   .catch(function(reason) {
-    ${4:error or reject}
+  ${4:error or reject}
   });
 
 snippet promise2_promise_only
-abbr promise2_promise_only
   ${1:PromiseName} = new Promise(function(resolve, reject){
-    resolve(${2:VariableData}); 
+  resolve(${2:VariableData}); 
   });
 
 snippet promise_all
-abbr promise all
-options head indent
   Promise.all(${1:PromiseName}).then(function(value) {
-    ${2:done}
+  ${2:done}
   })
   .catch(function(reason) {
-    ${3:error or reject}
+  ${3:error or reject}
   });
 
 snippet promise_race
-abbr promise race
-options head indent
   Promise.race(${1:PromiseName}).then(function(value) {
-    ${2:script}
+  ${2:script}
   });
 
 snippet await_promise_scripting_delay
-abbr await promise
-options head indent
    await new Promise(function(resolve) {
-     setTimeout(() => {
-       resolve();
-     }, ${1});
+   setTimeout(() => {
+     resolve();
+   }, ${1});
    });
    ${0}
 
 snippet map1
-abbr array map
   map( function ( value, key, object ) {
-    return ${2:script}
+  return ${2:script}
   });
   ${0}
 
 snippet filter
-abbr array filter
   filter( function ( value, key, object ) {
-    return ${2:script}
+  return ${2:script}
   })
   ${0}
 
 snippet unique
-abbr array filter(unique)
   filter(function (x, i, self) {
-    return self.indexOf(x) === i;
+  return self.indexOf(x) === i;
   })
   ${0}
 
 snippet isArray
-abbr isArray
   Array.isArray( ${1:variable} )
   ${0}
 
 # generator
 snippet gen_function1
-abbr gen_function1
-options head indent
   function* ${1}($2) {
-    yield ${3};
+  yield ${3};
   }
   let ${4:generatorName} = $1();
 
 snippet gen_function2_while_sample
-abbr gen_function sample
-options head indent
   function* ${1}($2) {
-    let i = 1;
-    let num = 1;
-    while (true) {
-      num += i
-      yield num
-    }
+  let i = 1;
+  let num = 1;
+  while (true) {
+    num += i
+    yield num
+  }
   }
   let ${3:generatorName} = $1();
 
 snippet next
-abbr /* console.log(gen.next());// { value: yieldValue, done: boolean } */
   ${1:generatorName}.next()
 
 # querySelector
 snippet querySelector
-abbr /* querySelector */
   ${1:rootDom}.querySelector('${2:selector}');
   ${0}
 
 snippet querySelectorAll
-abbr /* querySelectorAll */
   ${1:rootDom}.querySelectorAll('${2:selector}');
   ${0}
 
 snippet querySelectorAllEach
-abbr /* querySelectorAll(each) */
   Array.prototype.forEach.call(${1:rootDom}.querySelectorAll('${2:selector}'),()=>{
-    ${0}
+  ${0}
   });
 
 # fetch
 snippet fetch
-abbr fetch set
   fetch('${1:url}').then( res=>{
-    console.log( res );
-    ${0}
+  console.log( res );
+  ${0}
   }).catch( err =>{
-    console.log(err);
+  console.log(err);
   });
 
 snippet fetchFull
-abbr fetch full set
   fetch('${1:url}',{
-    method: '${2:get or post}',
-    headers: {
-      'content-type': 'application/json',
-      ${2:header}
-    },
-    body: JSON.stringify(${3:request body}),
-    credentials: '${3:include, same-origin, omit}',
-    chache: '${4:default, bypass, reload, revalidate, force-cache, offline}'
+  method: '${2:get or post}',
+  headers: {
+    'content-type': 'application/json',
+    ${2:header}
+  },
+  body: JSON.stringify(${3:request body}),
+  credentials: '${3:include, same-origin, omit}',
+  chache: '${4:default, bypass, reload, revalidate, force-cache, offline}'
   }).then(res => {
-     console.log(res.url, res.type, res.status);
-     if(res.headers.get('content-type') === 'application/json') {
-       res.json().then(json => console.log(json));
-      ${0}
-     } else {
-       // res.arrayBuffer();
-       // res.blob();
-       res.text().then(text => console.log(text));
-     }
+   console.log(res.url, res.type, res.status);
+   if(res.headers.get('content-type') === 'application/json') {
+     res.json().then(json => console.log(json));
+    ${0}
+   } else {
+     // res.arrayBuffer();
+     // res.blob();
+     res.text().then(text => console.log(text));
+   }
   }).catch(err => console.error(err));
 
 # object forEach
 snippet object_each
-abbr object forEach
-options head indent
   Object.keys(${1:object}).forEach((key)=>{
-      ${0} = $1[key]}
+    ${0} = $1[key]}
   });
 
 # before/after
 snippet before1
-abbr before(insertAdjacentHTML)
-options word indent
   insertAdjacentHTML('beforebegin', ${0:node or string});
 
 snippet before2
-abbr before(native code)
-options word indent
   before(${0:node or string});
 
 snippet after1
-abbr after(insertAdjacentHTML)
-options word indent
   insertAdjacentHTML('afterend', ${0:node or string});
 
 snippet after2
-abbr after(native code)
-options word indent
   after(${0:node or string});
 
 snippet contains
-options word indent
   el !== ${1:childElmenet} && el.contains($1)${0}
 
 snippet parseHTML
-abbr parseHTML
-options head indent
   let parseHTML = function(str) {
-    let tmp = document.implementation.createHTMLDocument();
-    tmp.body.innerHTML = str;
-    return tmp.body.children;
+  let tmp = document.implementation.createHTMLDocument();
+  tmp.body.innerHTML = str;
+  return tmp.body.children;
   };
   parseHTML(${0});
 
 snippet setTimeout1
-abbr setTimeout set(arrow function)
-options head word indent
   setTimeout( ()=>{
-    ${2}
+  ${2}
   },${1});
   ${0}
 
 snippet setTimeout2
-abbr setTimeout set(function)
-options head word indent
   setTimeout( function(){
-    ${2}
+  ${2}
   },${1});
   ${0}
 
 snippet settimeout1-return
-abbr timerid + setTimeout set(arrow function)
-options head word indent
   const timeid = setTimeout( ()=>{
-    ${2}
+  ${2}
   },${1});
   ${0}
 
 snippet settimeout2-return
-abbr timerid + setTimeout set(function)
-options head word indent
   const timeid = setTimeout( function(){
-    ${2}
+  ${2}
   },${1});
   ${0}
 
 # ******************************************
 # ESLint ***********************************
 snippet eslint-disable
-options word indent
   /* eslint-disable */
 
 snippet eslint-enable
-options word indent
   /* eslint-enable */
 
 snippet eslint-disable-line
-options word indent
   // eslint-disable-line
 
 snippet eslint-disable-next-line
-options word indent
   // eslint-disable-next-line
 
 snippet eslint-debugger
-options word indent
   debugger; // eslint-disable-line
 
 snippet eslint-specifying-variable
-abbr eslit Specifying Globals
-options word indent
   /* global ${1: var1, var2, var3:writable, var4:readonly, ...} */
 
 
 # ******************************************
 # prettier ***********************************
 snippet prettier-ignore
-options word indent
   /* prettier-ignore */
 
 snippet prettier-ignore-start
-options word indent
   /* prettier-ignore-start */
 
 snippet prettier-ignore-end
-options word indent
   /* prettier-ignore-end */
 
 
@@ -678,120 +554,83 @@ snippet Matha(絶対値)
 
 # function
 snippet func(callback)
-options word
   function(${1:variable or variable=defaultValue}) {
   ${2:script}
   });
 
 snippet func(closure)
-options head indent
   (function( window, document ) {
   ${1:script}
   })( window, document );
 
 snippet func(closure_jquery)
-options head indent
   (function( window, document, $ ) {
   ${1:script}
   })( window, document, jQuery );
 
 # native function
 snippet forEach
-options head indent
   ${1:name}.forEach(function(${2:name} ,index,arr){
   ${3:$script}
   });
 
 # native function
 snippet some
-options head indent
   ${1:name}.some(function(${2:name} ,index,arr){
   ${3:$script}
   });
 
 snippet objectKeys
-options head indent
   Object.keys(${1:ObjectName}).forEach(function(key,value){
   ${3:$script}
   });
 
 snippet regexpHankakuNumber1
-abbr /* 半角数値のみ（空文字OK） */
-options word
   /^\d*$/
 
 snippet regexpHankakuNumber2
-abbr /* 半角数値のみ（空文字NG） */
-options word
   /^\d+$/
 
 snippet regexpHankakuAlphabet1
-abbr /* 半角英字のみ（空文字OK） */
-options word
   /^[a-zA-Z]*$/
 
 snippet regexpHankakuAlphabet2
-abbr /* 半角英字のみ（空文字NG） */
-options word
   /^[a-zA-Z]+$/
 
 snippet regexpHankakuEiSu1
-abbr /* 半角英数字のみ（空文字OK） */
-options word
   /^[0-9a-zA-Z]*$/
 
 snippet regexpHankakuEiSu2
-abbr /* 半角英数記号のみ（空文字OK） */
-options word
   /^[a-zA-Z0-9!-/:-@¥[-\`{-~]*$/
 
 snippet regexpHankakuLengthX1
-abbr /* X文字以上の半角英数字 */
-options word
   /^([a-zA-Z0-9]{${1:number},})$/
 
 snippet regexpHankakuLengthX2
-abbr /* X文字以上Y文字以内の半角英数字 */
-options word
   /^([a-zA-Z0-9]{${1:number},${2:number}})$/
 
 snippet regexpNumberLengthX1
-abbr /* X文字以下の半角数値 */
-options word
   /^(\d{0,8})$/
 
 snippet regexpNumberLengthX2
-abbr /* 8文字の半角数値 */
   /^\d{8}$/
 
 snippet regexpURL
-abbr /* URL */
-options word
   /^https?:\/\/
 
 snippet regexpPostalCode
-abbr /* 郵便番号（999-9999形式） */
-options word
   /^\d{3}-\d{4}$/
 
 snippet regexpIP
-abbr /* IP（999.999.999.999形式） */
-options word
   /^\d{1,3}(\.\d{1,3}){3}$/
 
 snippet regexpZenkakuHira
-abbr /* 全角ひらがな（空文字OK） */
-options word
   /^[ぁ-んー]*$/
 
 snippet regexpZenkakuKana
-abbr /* 全角カタカナ（空文字OK） */
-options word
   /^[ァ-ンヴー]*$/
 
 snippet regexpZenkaku
-abbr /* 全角文字のみ（空文字OK）/ */
-options word
   /^[^\x20-\x7e]*$/
 
 
@@ -801,43 +640,33 @@ options word
 # javascript snippet(util) *****************
 # utility
 snippet vthi
-options head indent
   var _this = this;
 
 snippet vtha
-options head indent
   var _that = this;
 
 snippet vself
-options head indent
   var self = this;
 
 snippet isIE
-options head indent
   var isIE = (window.navigator.appVersion.match(/MSIE/) || window.navigator.appVersion.match(/Trident/))? true : false;
 
 snippet isIE6
-options head indent
   var isIE6 = (window.navigator.appVersion.toLowerCase().indexOf('msie 6.') !== -1)? true : false;
 
 snippet isIE7
-options head indent
   var isIE7 = (window.navigator.appVersion.toLowerCase().indexOf('msie 7.') !== -1)? true : false;
 
 snippet isIE8
-options head indent
   var isIE8 = (window.navigator.appVersion.toLowerCase().indexOf('msie 8.') !== -1)? true : false;
 
 snippet isIE9
-options head indent
   var isIE9 = (window.navigator.appVersion.toLowerCase().indexOf('msie 9.') !== -1)? true : false;
 
 snippet isIE10
-options head indent
   var isIE10 = (window.navigator.appVersion.toLowerCase().indexOf('msie 10.') !== -1)? true : false;
 
 snippet isIE11
-options head indent
   var isIE11 = (function(){
   var appVersion = window.navigator.appVersion;
   var isIE = (appVersion.match(/MSIE/) || appVersion.match(/Trident/))? true : false;
@@ -846,17 +675,14 @@ options head indent
   })();
 
 snippet isAndroid
-options head indent
   var isAndroid = (/Android/.test(window.navigator.userAgent) && !/Windows Phone/.test(window.navigator.userAgent));
 
 snippet isAndroid2
-options head indent
   var isAndroid2 = /Android 2/.test(window.navigator.userAgent);
 
 snippet isAndroid4
-options head indent
   var isAndroid4, isAndroid4Default, isAndroid4Chrome;
-  isAndroid4    = false;
+  isAndroid4  = false;
   isAndroid4Default = false;
   isAndroid4Chrome  = false;
   isAndroid4 = /Android 4/.test(window.navigator.userAgent);
@@ -867,11 +693,9 @@ options head indent
   }
 
 snippet isIOS
-options head indent
   var isIOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
 
 snippet gtm
-options head indent
   dataLayer.push({
   'event':'gaTrackEvent',
   'gaCategory': '${1:gaCategoryName}',
@@ -883,15 +707,14 @@ options head indent
 
 # インスタンス生成用の仮想クラス
 snippet old_class
-options head indent
   ${1:ClassName}.create = function () {
 
   var app = {
-    ${2:MemberName} : this.${3:VariableData}
+  ${2:MemberName} : this.${3:VariableData}
   };
 
   app.initialize = function () {
-    ${3:script}
+  ${3:script}
   };
 
   return app;
@@ -899,7 +722,6 @@ options head indent
 
 # format
 snippet funcZeroPadding
-abbr funcZeroPadding
   /**
    * 0詰めフォーマット
    * @param  {Number} num  number or string
@@ -907,77 +729,74 @@ abbr funcZeroPadding
    * @return {String} (In an error, 'false' is returned. )
    */
   function zeroPadding(num, n) {
-    var target_string;
-    switch (typeof num) {
-      case 'string' : target_string = num;
-              break;
-      case 'number' : target_string = num.toString();
-              break;
-      default     : return false;
-    }
-    while(target_string.length < n){
-      target_string = '0' + target_string;
-    }
-    return target_string;
+  var target_string;
+  switch (typeof num) {
+    case 'string' : target_string = num;
+        break;
+    case 'number' : target_string = num.toString();
+        break;
+    default   : return false;
+  }
+  while(target_string.length < n){
+    target_string = '0' + target_string;
+  }
+  return target_string;
   };
 
 # NumberDelimitter
 snippet funcNumberDelimiter
-abbr funcNumberDelimiter
   /**
-    * 価格の区切り文字を挿入したstringを返す
-    * @param {Number} num 数値（interger）
-    */
+  * 価格の区切り文字を挿入したstringを返す
+  * @param {Number} num 数値（interger）
+  */
   function numberDelimiter(num) {
-    // ES2018 まだ早い
-    //return String(num).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
-    return num.toLocaleString('ja-JP')
+  // ES2018 まだ早い
+  //return String(num).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+  return num.toLocaleString('ja-JP')
   }
 
 # fragment
 snippet fragment
-abbr fragment set
-    const _fragment = document.createDocumentFragment();
+  const _fragment = document.createDocumentFragment();
 
-    for(let cnt=0, max=${1:variable}.length; cnt<max; cnt++ ){
-        const item = document.createElement('${2:tagname}');
-        const text = document.createTextNode('${3:string}');
-        item.appendChild(song);
-        fragment.appendChild(item); // fragmentの追加する
-    }
+  for(let cnt=0, max=${1:variable}.length; cnt<max; cnt++ ){
+    const item = document.createElement('${2:tagname}');
+    const text = document.createTextNode('${3:string}');
+    item.appendChild(song);
+    fragment.appendChild(item); // fragmentの追加する
+  }
 
-    ${4:element}.appendChild(fragment);
-    ${0}
+  ${4:element}.appendChild(fragment);
+  ${0}
 
 snippet xmlhttp
-options head indent
   var xhr = new XMLHttpRequest();
   
   // ハンドラの登録.
   xhr.onreadystatechange = function() {
-    switch ( xhr.readyState ) {
-      case 0:
-        // 未初期化状態.
-        console.log( 'uninitialized!' );
-        break;
-      case 1: // データ送信中.
-        console.log( 'loading...' );
-        break;
-      case 2: // 応答待ち.
-        console.log( 'loaded.' );
-        break;
-      case 3: // データ受信中.
-        console.log( 'interactive... '+xhr.responseText.length+' bytes.' );
-        break;
-      case 4: // データ受信完了.
-        if( xhr.status == 200 || xhr.status == 304 ) {
-          var data = xhr.responseText; // responseXML もあり
-          console.log( 'COMPLETE! :'+data );
-        } else {
-          console.log( 'Failed. HttpStatus: '+xhr.statusText );
-        }
-        break;
+  switch ( xhr.readyState ) {
+    case 0:
+    // 未初期化状態.
+    console.log( 'uninitialized!' );
+    break;
+    case 1: // データ送信中.
+    console.log( 'loading...' );
+    break;
+    case 2: // 応答待ち.
+    console.log( 'loaded.' );
+    break;
+    case 3: // データ受信中.
+    console.log( 'interactive... '+xhr.responseText.length+' bytes.' );
+    break;
+    case 4: // データ受信完了.
+    if( xhr.status == 200 || xhr.status == 304 ) {
+      var data = xhr.responseText; // responseXML もあり
+      console.log( 'COMPLETE! :'+data );
+    } else {
+      console.log( 'Failed. HttpStatus: '+xhr.statusText );
     }
+    break;
+  }
   };
 
   xhr.open( 'POST', 'http://{送信先URL}/post.php', false );
@@ -997,31 +816,31 @@ options head indent
 # CreateURL
 snippet _for
   _.forEach( ${1:object}, function ( ${2:value}, key, object ) {
-    ${3:script}
+  ${3:script}
   });
 
 snippet _filter
   _.filter( ${1:object}, function ( value, key, object ) {
-    return ${2:script}
+  return ${2:script}
   });
 
 snippet _map
   _.map( ${1:object}, function ( value, key, object ) {
-    return ${2:script}
+  return ${2:script}
   });
 
 snippet _URL
   this.BASE_URL = '${1:mydomain.com/url}';
   this.BASE_OPTION = {
-    ${2:key} : '${3:value}'
+  ${2:key} : '${3:value}'
   };
 
   this.url = this.BASE_URL + '?';
 
   var delimiter = '';
   _.forEach( this.BASE_OPTION, function ( value, key, arr ) {
-    _this.url += delimiter + key + '=' + value;
-    delimiter = '&';
+  _this.url += delimiter + key + '=' + value;
+  delimiter = '&';
   });
 
   this.$tmp = _.template( ${4:jQuery Object} );
@@ -1030,71 +849,69 @@ snippet _URL
 # ******************************************
 # Vue  *************************************
 snippet vue_orthodox
-abbr vue_orthodox
-options head indent
   export default function(store, _root) {
-    new Vue({
-      el: _root,
-      data: {
-        input: null,
-      },
+  new Vue({
+    el: _root,
+    data: {
+    input: null,
+    },
   
-      //インスタンスの生成前に実行, this.dataとかもない
-      beforeCreate: function() {
-        //console.log('beforeCreate');
-      },
+    //インスタンスの生成前に実行, this.dataとかもない
+    beforeCreate: function() {
+    //console.log('beforeCreate');
+    },
 
-      //インスタンスが作成された後で実行, this.$elとかはない
-      created: function() {
-        //console.log('created, ');
-      },
+    //インスタンスが作成された後で実行, this.$elとかはない
+    created: function() {
+    //console.log('created, ');
+    },
 
-      //elementへのマウント前に実行, this.$elはない
-      beforeMount: function() {
-        //console.log('beforeMount');
-      },
+    //elementへのマウント前に実行, this.$elはない
+    beforeMount: function() {
+    //console.log('beforeMount');
+    },
 
-      //elementへのマウントがされた後で実行, this.$elがある
-      // - 子コンポーネント全てをマウントしたことは保証されない
-      // - サーバサイドレンダリング（SSR）ではうごかない
-      mounted: function() {
-        //console.log('mounted');
-      },
+    //elementへのマウントがされた後で実行, this.$elがある
+    // - 子コンポーネント全てをマウントしたことは保証されない
+    // - サーバサイドレンダリング（SSR）ではうごかない
+    mounted: function() {
+    //console.log('mounted');
+    },
 
-      //データの更新があった時に、rerenderされる前に実行
-      beforeUpdate: function() {
-        //console.log('beforeUpdate');
-      },
+    //データの更新があった時に、rerenderされる前に実行
+    beforeUpdate: function() {
+    //console.log('beforeUpdate');
+    },
 
-      //データの更新があった時に、rerenderされた後に実行
-      updated: function() {
-        //console.log('updated');
-      },
+    //データの更新があった時に、rerenderされた後に実行
+    updated: function() {
+    //console.log('updated');
+    },
 
-      //$destroy()が呼ばれた後、インスタンスが削除される前に実行
-      beforeDestroy: function() {
-        //console.log('beforeDestroy');
-      },
+    //$destroy()が呼ばれた後、インスタンスが削除される前に実行
+    beforeDestroy: function() {
+    //console.log('beforeDestroy');
+    },
 
-      //$destroy()が呼ばれた後、インスタンスが削除された後に実行
-      destroyed: function() {
-        //console.log('destroyed');
-      },
+    //$destroy()が呼ばれた後、インスタンスが削除された後に実行
+    destroyed: function() {
+    //console.log('destroyed');
+    },
   
-      /****************
-       * other
-       ****************/
-      computed: {},
-      methods: {
-        //onMouseenter: function() {
-        //  console.log('mouseenter');
-        //  this.mogeta()
-        //},
-        //mogeta: function() {
-        //  console.log('mogeta!');
-        //}
-      }
-    });
+    /****************
+     * other
+     ****************/
+    computed: {},
+    methods: {
+    //onMouseenter: function() {
+    //  console.log('mouseenter');
+    //  this.mogeta()
+    //},
+    //mogeta: function() {
+    //  console.log('mogeta!');
+    //}
+    }
+  });
   }
 
 
@@ -1103,7 +920,6 @@ options head indent
 
 # file
 snippet doc_file-full
-abbr jsdoc file fullset
   /**
    * @file ${1:overview_html}
    * @author ${2:author}
@@ -1112,7 +928,6 @@ abbr jsdoc file fullset
 
 # class
 snippet doc_class
-abbr jsdoc class fullset
   /**
    * ${1:overview_html}
    * @class
@@ -1121,7 +936,6 @@ abbr jsdoc class fullset
 
 # member
 snippet doc_member
-abbr jsdoc member fullset
   /**
    * ${1:overview_html}
    * @member {${2:type}}
@@ -1129,13 +943,10 @@ abbr jsdoc member fullset
 
 # constructor
 snippet doc_constructor
-abbr jsdoc constructor
-options word
   @constructs
 
 # method
 snippet doc_method
-abbr jsdoc method
   /**
    * ${1:overview_html}
    *
@@ -1149,7 +960,6 @@ abbr jsdoc method
 
 # method
 snippet doc_type
-abbr jsdoc type
   /**
    * ${1:overview_html}
    * @type {${2:type}}
@@ -1157,7 +967,6 @@ abbr jsdoc type
 
 # method function
 snippet doc_function
-abbr jsdoc function
   /**
    * ${1:note}
    * @param {${2:type}} ${3:name} ${4:detail}
@@ -1166,85 +975,55 @@ abbr jsdoc function
 # jsdoc util
 ## file
 snippet doc_file
-abbr jsdoc file
-options word
   @file ${1:name}
 
 ## fire
 snippet doc_fire
-abbr jsdoc fire
-options word
   @fire ${1:className}#${1:Event}
 
 ## author
 snippet doc_a
-abbr jsdoc author
-options word
   @author ${1:name}
 
 ## class
 snippet doc_c
-abbr jsdoc class
-options word
   @class ${1:name}
 
 ## version
 snippet doc_v
-abbr jsdoc version
-options word
   @version ${1:version}
 
 ## callback
 snippet doc_cb
-abbr jsdoc callback
-options word
   @callback {Boolean} ${1:name} ${2:discription}
 
 ## param
 snippet doc_pb
-abbr jsdoc param boolean
-options word
   @param {Boolean} ${1:name} ${2:discription}
 
 snippet doc_pn
-abbr jsdoc param number
-options word
   @param {Number} ${1:name} ${2:discription}
 
 snippet doc_ps
-abbr jsdoc param string
-options word
   @param {String} ${1:name} ${2:discription}
 
 snippet doc_po
-abbr jsdoc param object
-options word
   @param {Object} ${1:name} ${2:discription}
 
 snippet doc_pe
-abbr jsdoc param event
-options word
   @param {Event} e ${1:EventObject}
 
 ## return
 snippet doc_rb
-abbr jsdoc return boolean
-options word
   @return {Boolean} ${1:name} ${2:discription}
 
 snippet doc_rn
-abbr jsdoc return number
-options word
   @return {Number} ${1:name} ${2:discription}
 
 snippet doc_rs
-abbr jsdoc return string
-options word
   @return {String} ${1:name} ${2:discription}
 
 snippet doc_ro
-abbr jsdoc return object
-options word
   @return {Object} ${1:name} ${2:discription}
 
 
@@ -1256,14 +1035,14 @@ options word
 #ajax
 snippet ajaxo
   var ajaxOption = {
-    url    : '${1:mydomain.com/url}',
-    type   : '${2:POST}',
-    dataType : '${3:xml/html/script/json}',
-    data   : $.param( $('${4:Element or Expression}') ),
-    beforeSend : function( xhr ) {
-     xhr.setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00 GMT');
-    },
-    jsonpCallback : '${3:callback function name}'
+  url  : '${1:mydomain.com/url}',
+  type   : '${2:POST}',
+  dataType : '${3:xml/html/script/json}',
+  data   : $.param( $('${4:Element or Expression}') ),
+  beforeSend : function( xhr ) {
+   xhr.setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00 GMT');
+  },
+  jsonpCallback : '${3:callback function name}'
   };
 
 snippet $ajax
@@ -1274,19 +1053,19 @@ snippet $ajax
 
 snippet $ajaxhtml
   var ajaxOption = {
-    url    : '${1:mydomain.com/url}',
-    type   : 'GET',
-    dataType : 'html',
-    data   : $.param( $('${2:Element or Expression}') ),
-    beforeSend : function( xhr ) {
-     xhr.setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00 GMT');
-    },
-    jsonpCallback : '${3:callback function name}'
+  url  : '${1:mydomain.com/url}',
+  type   : 'GET',
+  dataType : 'html',
+  data   : $.param( $('${2:Element or Expression}') ),
+  beforeSend : function( xhr ) {
+   xhr.setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00 GMT');
+  },
+  jsonpCallback : '${3:callback function name}'
   };
 
   var jqxhr = $.ajax( ajaxOption )
   .done( function( responseText, textStatus, jqXHR ){
-    var html = jQuery(document.createElement('div')).append( jQuery.parseHTML( responseText ) ).find( ${4:selector} )
+  var html = jQuery(document.createElement('div')).append( jQuery.parseHTML( responseText ) ).find( ${4:selector} )
   })
   .fail( ${5:function} )
   .always( ${6:function} );
@@ -1295,20 +1074,20 @@ snippet $ajaxdfd
   var $dfd = $.Deferred();
 
   var ajaxOption = {
-    url    : '${1:mydomain.com/url}',
-    type   : '${2:POST}',
-    dataType : '${3:xml/html/script/json}',
-    data   : $.param( $('${4:Element or Expression}') ),
-    beforeSend : function( xhr ) {
-     xhr.setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00 GMT');
-    },
-    jsonpCallback : '${3:callback function name}'
+  url  : '${1:mydomain.com/url}',
+  type   : '${2:POST}',
+  dataType : '${3:xml/html/script/json}',
+  data   : $.param( $('${4:Element or Expression}') ),
+  beforeSend : function( xhr ) {
+   xhr.setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00 GMT');
+  },
+  jsonpCallback : '${3:callback function name}'
   };
 
   $.ajax( ajaxOption ).done( function ( res, status, xhr ) {
-    $dfd.resolve();
+  $dfd.resolve();
   }).fail(function () {
-    $dfd.reject();
+  $dfd.reject();
   });
 
   return $dfd.promise();
@@ -1342,8 +1121,8 @@ snippet $dfd
 # each
 snippet $each
   ${1:jQuery Object}.each( function( index, element ) {
-    var $this = $( element );
-    ${2:script}
+  var $this = $( element );
+  ${2:script}
   });
 
 
@@ -1380,22 +1159,22 @@ snippet $each
 # snippet module_umd
 # options head indent
 #   (function(root, definition){
-#     // CommonJS
-#     if (typeof exports === 'object') {
-#     module.exports = definition();
-#     // RequireJS
-#     } else if (typeof define === 'function' && define.amd) {
-#     define(definition);
-#     // <script>
-#     } else {
-#     ${1:ClassName} = definition();
-#     }
+#   // CommonJS
+#   if (typeof exports === 'object') {
+#   module.exports = definition();
+#   // RequireJS
+#   } else if (typeof define === 'function' && define.amd) {
+#   define(definition);
+#   // <script>
+#   } else {
+#   ${1:ClassName} = definition();
+#   }
 #   })(this, function(){
-#     'use strict';
+#   'use strict';
 #   
-#     var $1 = {};
+#   var $1 = {};
 # 
-#     ${2:functions} 
+#   ${2:functions} 
 # 
-#     return $1;
+#   return $1;
 #   });
