@@ -1,4 +1,7 @@
-javascript-snippet
+Oirano snippet
 ==================
-
-Small javascript( + jQuery + CoffeeScript) snippet
+javascript.snippets
+css.snippets
+scss.snippets
+vue.snippets
+sh.snippets
