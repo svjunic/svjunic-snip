@@ -232,6 +232,15 @@ snippet import_es2015_2
 import * as name from '${1:module}';
 ${0}
 
+# dynamic import
+snippet import_dynamic_1_webpack
+const { default: ${1:name} } = await import( /* webpackChunkName: "${2:/js/index.moge.js}" */ '${2:shared/components/moge.js}' );
+
+snippet import_dynamic_1
+const ${1:module} = await import( '${2:shared/components/moge.js}' );
+
+# snippet import_dynamic_2
+
 # console and debugger
 snippet cl
 console.log(${1:object});
