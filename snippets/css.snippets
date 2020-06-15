@@ -37,3 +37,32 @@ snippet flexc
   # flex-grow, flex-shrink, flex-basis のショートハンド
   flex: ${11:none} $8 $9 $10;
 }
+
+snippet media
+@media screen and (max-width: ${1}px) {
+}
+
+snippet media_1
+@media screen and (max-width: 374px) {
+  .entry table td {
+    font-size: 12px;
+  }
+}
+
+snippet media_2
+@media screen and (max-width: 320px) {
+}
+
+snippet transition
+transition: ${1:propety} ${2:transition-duration} ${3:transition-timing-funciton} ${4:transition-delay};${5:cursor}
+
+snippet animation
+animation: ${1:animation-name} ${2:animation-duration} ${3:animation-timing-function|easing} ${4:animation-delay} ${5:animation-iteration-count|infinite} ${6:animation-direction|normal,reverse,alternate,alternate-reverse} ${7:animation-fill-mode|none,forwards,backwards,both} ${8:animation-play-state:running,paused}
+
+snippet keyframes
+@keyframes ${1:keyframes-name}{
+	0%{
+	}
+	100%{
+	}
+}
