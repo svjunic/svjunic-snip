@@ -933,3 +933,24 @@ snippet doc_pn
 snippet doc_ps
 @param {String} ${1:name} ${2:discription}
 
+
+# ******************************************
+# React Hooks ******************************
+## state
+snippet useState
+const [${1:state},${2:setState}] = useState(${3:initial value})
+
+snippet useEffect1
+useEffect( ()=>{
+  ${1:script}
+}, [$2]);
+
+snippet useEffect2
+useEffect( ()=>{
+  ${1:script}
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [$0]);
+
+## eslint disable comment
+snippet eslint-disable-react-hooks-exhaustive-deps
+// eslint-disable-next-line react-hooks/exhaustive-deps
