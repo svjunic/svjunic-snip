@@ -88,10 +88,20 @@ function ${1:functionName}({${2:variable or variable=defaultValue}}) {
 }
 
 # arrow function
-snippet func_arrow
+snippet func_arrow1
 (${1:VariableData}) => {
   ${0}
 }
+
+snippet func_async1
+async ()=>{
+	${0}
+};
+
+snippet func_async2
+const ${1} = async ()=>{
+	${0}
+};
 
 # getter
 snippet get-normal
@@ -391,6 +401,10 @@ debugger; // eslint-disable-line
 
 snippet eslint-specifying-variable
 /* global ${1: var1, var2, var3:writable, var4:readonly, ...} */
+
+# react-hooks
+snippet eslint-disable-react-hooks-exhaustive-deps
+// eslint-disable-next-line react-hooks/exhaustive-deps
 
 
 # ******************************************
@@ -937,7 +951,7 @@ snippet doc_ps
 # ******************************************
 # React Hooks ******************************
 ## state
-snippet useState
+snippet constUseState
 const [${1:state},${2:setState}] = useState(${3:initial value})
 
 snippet useEffect1
@@ -948,9 +962,18 @@ useEffect( ()=>{
 snippet useEffect2
 useEffect( ()=>{
   ${1:script}
-// eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [$0]);
 
-## eslint disable comment
-snippet eslint-disable-react-hooks-exhaustive-deps
-// eslint-disable-next-line react-hooks/exhaustive-deps
+snippet initialFunctionalComponent
+import React from "react";
+
+export interface $1Props {
+	$3
+}
+
+const ${1:`!v expand('%:t:r')`}: React.FC<$2$1Props> = props => {
+	return 
+};
+
+export default $1;

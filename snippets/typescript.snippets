@@ -88,10 +88,20 @@ function ${1:functionName}({${2:variable or variable=defaultValue}}) {
 }
 
 # arrow function
-snippet func_arrow
+snippet func_arrow1
 (${1:VariableData}) => {
   ${0}
 }
+
+snippet func_async1
+async ()=>{
+	${0}
+};
+
+snippet func_async2
+const ${1} = async ()=>{
+	${0}
+};
 
 # getter
 snippet get-normal
