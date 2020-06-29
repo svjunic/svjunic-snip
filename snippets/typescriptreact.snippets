@@ -981,3 +981,17 @@ const `expand("%:t:r")`: React.FC<`expand("%:t:r")`Props> = props => {
 };
 
 export default `expand("%:t:r")`;
+
+snippet initialFunctionalComponentNoProps
+import React from "react";
+
+const `expand("%:t:r")`: React.FC = () => {
+	${3:script}
+	return (
+  	<>
+		  ${2:html}
+  	</>
+	)
+};
+
+export default `expand("%:t:r")`;
