@@ -948,11 +948,24 @@ snippet doc_ps
 
 # ******************************************
 # Types ************************************
+# type
+snippet type
+type ${1:name or name<T>} = ${2:typeName,typeName<T>} | ${3:typeName,typeName<T>}
+
 # interface
 snippet interface
-export interface ${1:Name}Props {
+export interface ${1:name}Props {
 	${2:propaties}
 }
+
+snippet interfaceT
+export interface ${1:name}Props<T> {
+	${2:propaties}
+}
+
+# declare
+snippet declare
+declare const ${1:variableName}: never;
 
 # ******************************************
 # React ************************************
