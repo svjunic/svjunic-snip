@@ -955,7 +955,7 @@ export interface ${1Name}Props {
 }
 
 # ******************************************
-# React Hooks ******************************
+# React ************************************
 ## state
 snippet constUseState
 const [${1:state},${2:setState}] = useState(${3:initial value})
@@ -1005,3 +1005,13 @@ const `expand("%:t:r")`: React.FC = () => {
 };
 
 export default `expand("%:t:r")`;
+
+snippet provider
+<${1:Context}.Provider value={${2:variable}}>
+  ${0}
+</$1.Provider>
+
+snippet consumer
+<${1:Context}.Consumer>
+  ${0}
+</$1.Consumer>
