@@ -972,11 +972,11 @@ export interface `expand("%:t:r")`Props {
 }
 
 const `expand("%:t:r")`: React.FC<`expand("%:t:r")`Props> = props => {
-	${3:script}
+	${4:script}
 	return (
-  	<>
-		  ${2:html}
-  	</>
+  	<${2:wrapTag}>
+		  ${3:html}
+  	</$2>
 	)
 };
 
@@ -986,11 +986,11 @@ snippet initialFunctionalComponentNoProps
 import React from "react";
 
 const `expand("%:t:r")`: React.FC = () => {
-	${3:script}
+	${4:script}
 	return (
-  	<>
-		  ${2:html}
-  	</>
+  	<${2:wrapTag}>
+		  ${3:html}
+  	</$2>
 	)
 };
 
