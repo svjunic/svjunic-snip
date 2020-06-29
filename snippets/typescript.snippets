@@ -946,12 +946,22 @@ snippet doc_pn
 snippet doc_ps
 @param {String} ${1:name} ${2:discription}
 
+# ******************************************
+# Types ************************************
+# interface
+snippet interface
+export interface ${1Name}Props {
+	${2:propaties}
+}
 
 # ******************************************
 # React Hooks ******************************
 ## state
 snippet constUseState
 const [${1:state},${2:setState}] = useState(${3:initial value})
+
+snippet createContext
+export const ${1:ContextName}Context = createContext(${2:defaultValue});
 
 snippet useEffect1
 useEffect( ()=>{
