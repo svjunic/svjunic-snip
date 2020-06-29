@@ -979,6 +979,15 @@ useEffect( ()=>{
   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [$0]);
 
+## useReducer
+snippet constUseReducer
+const [${1:state}, $1Dispatch] = useReducer(${2:ReducerName}, ${3:initialState});
+
+snippet reducer
+const ${1:ReducerName}Reducer = (state, action) => {
+  ${2:script}
+};
+
 ## functional component
 snippet initialFunctionalComponent
 import React from "react";
