@@ -960,9 +960,14 @@ export interface ${1Name}Props {
 snippet constUseState
 const [${1:state},${2:setState}] = useState(${3:initial value})
 
+## context
 snippet createContext
 export const ${1:ContextName}Context = createContext(${2:defaultValue});
 
+snippet constUseContext
+const ${1:variable} = useContext(${2:ContextName})
+
+## useEffect
 snippet useEffect1
 useEffect( ()=>{
   ${1:script}
@@ -974,6 +979,7 @@ useEffect( ()=>{
   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [$0]);
 
+## functional component
 snippet initialFunctionalComponent
 import React from "react";
 
