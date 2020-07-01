@@ -972,6 +972,12 @@ export interface I${1:name}<T> {
 snippet declare
 declare const ${1:variableName}: never;
 
+# enum
+snippet enum
+export enum ${1}{
+  ${2:name}= '${3:value}',
+}
+
 # ******************************************
 # React ************************************
 ## state
@@ -1048,3 +1054,14 @@ snippet consumer
 <${1:Context}.Consumer>
   ${0}
 </$1.Consumer>
+
+snippet ActionTypeConst
+export const ${1}ActionType = {
+  ${2}
+};
+type ${1}ActionType = typeof ${1}ActionType[keyof typeof ${1}ActionType];
+
+snippet ActionTypeEum
+export enum ${1}ActionType {
+  ${2:name}= '${3:value}',
+}
