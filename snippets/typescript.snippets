@@ -1012,6 +1012,10 @@ const ${1:ReducerName}Reducer = (state, action) => {
   ${2:script}
 };
 
+## useRef
+snippet constUseRef
+const ${1:name}Ref = useRef(null);
+
 ## functional component
 snippet initialFunctionalComponent
 import React from "react";
@@ -1045,18 +1049,27 @@ const `expand("%:t:r")`: React.FC = () => {
 
 export default `expand("%:t:r")`;
 
-## Context HTML
-snippet provider
-<${1:Context}.Provider value={${2:variable}}>
-  ${0}
-</$1.Provider>
+snippet customHook
+import { useState } from "react";
 
-snippet consumer
-<${1:Context}.Consumer>
-  ${0}
-</$1.Consumer>
+function `expand("%:t:r")` = () => {
+	const [${1:state},${2:setState}] = useState(${3:initial value})
+
+  const bind = {
+	  $1,
+	  onChange: (e)=> {
+	 	  $2(e.target.value)
+	  }
+	}
+
+	return [$1, bind];
+	// return [$1, bind, ...];
+};
+
+export default `expand("%:t:r")`;
 
 ## Global Context
+snippet globalContext
 interface I${1:name}State {
 	${2:propaties}
 }
@@ -1103,3 +1116,39 @@ snippet ActionTypeEum
 export enum ${1}ActionType {
   ${2:name}= '${3:value}',
 }
+
+## html
+snippet ref
+ref={${1:name}}
+
+snippet value
+value={${1:name}}
+
+snippet onClick1
+onClick={handle${1:function}}
+
+snippet onClick2
+onClick={(e) => ${1:script}}
+
+snippet onSubmit1
+onSubmit={handle${1:function}
+
+snippet onSubmit2
+onSubmit={(e) => ${1:script}}
+
+snippet onChange1
+onChange={handle${1:function}
+
+snippet onSubmit2
+onChange={(e) => ${1:script}}
+
+### Context HTML
+snippet provider
+<${1:Context}.Provider value={${2:variable}}>
+  ${0}
+</$1.Provider>
+
+snippet consumer
+<${1:Context}.Consumer>
+  ${0}
+</$1.Consumer>
