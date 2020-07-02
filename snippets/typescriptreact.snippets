@@ -1045,6 +1045,7 @@ const `expand("%:t:r")`: React.FC = () => {
 
 export default `expand("%:t:r")`;
 
+## Context HTML
 snippet provider
 <${1:Context}.Provider value={${2:variable}}>
   ${0}
@@ -1055,6 +1056,43 @@ snippet consumer
   ${0}
 </$1.Consumer>
 
+## Global Context
+interface I${1:name}State {
+	${2:propaties}
+}
+
+export const $1ActionType = {
+  ${3:variableName}= '$3',
+};
+type $1ActionType = typeof $1ActionType[keyof typeof $1ActionType];
+
+const initialState :I$1State = {
+	${4:propaties}
+};
+
+const StoreContext = createContext(initialState);
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case $1ActionType.$3:
+      return {$1};
+			// return {...state, $propatyName: $value}
+      // return { hogehoge: 'hogehogehoge' }
+      break;
+    default:
+      return state;
+      break;
+  }
+};
+
+const Provider = ({children}) => {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  return <Store.Provider value={{state, dispatch}}>{children}</Store.Provider>
+}
+
+export { Store, Provider }
+
+## reducerのaction.type用の宣言
 snippet ActionTypeConst
 export const ${1}ActionType = {
   ${2}
