@@ -995,12 +995,12 @@ const ${1:variable} = useContext(${2:ContextName})
 snippet useEffect1
 useEffect( ()=>{
   ${1:script}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [$2]);
 
 snippet useEffect2
 useEffect( ()=>{
   ${1:script}
-  // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [$0]);
 
 ## useReducer
@@ -1011,6 +1011,18 @@ snippet reducer
 const ${1:ReducerName}Reducer = (state, action) => {
   ${2:script}
 };
+
+## useCallback
+snippet constUseCallback1
+const ${1:name}Callback = useCallback(()=>{
+  ${3:script}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [$2]);
+
+snippet constUseCallback2
+const ${1:name}Callback = useCallback(()=>{
+  ${3:script}
+}, [$2]);
 
 ## useRef
 snippet constUseRef
