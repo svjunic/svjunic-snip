@@ -78,12 +78,28 @@ static $4 (${5:param}){
 
 # function
 snippet func_es2015
-function ${1:functionName}(${2:variable or variable=defaultValue}) {
+function ${1:functionName}(${2:variable or variable=defaultValue}): ${3:return} {
   ${0}
 }
 
+## これいらんかも
 snippet func_es2015_2
-function ${1:functionName}({${2:variable or variable=defaultValue}}) {
+function ${1:functionName}({${2:variable}}): ${3:return} {
+  ${0}
+}
+
+# generics
+snippet func_generics
+function ${1:functionName}<T>(${3:variable}:T}) {
+  ${0}
+}
+
+snippet func_generics2
+interface $2 {
+  ${5}
+}
+function ${1:functionName}<T extends ${2:interfaceName},U keyof T>(${3:variable}:T, ${4:keyName}:U ) {
+  // return obj[$4]
   ${0}
 }
 
@@ -194,12 +210,6 @@ const ${1} = ${2:'$1'};
 
 snippet const2
 const [${1}] = [${2:'$1'}];
-
-snippet var1
-var ${1} = ${2:'$1'};
-
-snippet var2
-var [${1}] = [${2:'$1'}];
 
 # promise
 snippet promise1_fullset
@@ -954,17 +964,17 @@ type ${1:name or name<T>} = ${2:typeName,typeName<T>} | ${3:typeName,typeName<T>
 
 # interface
 snippet interface
-export interface I${1:name} {
+declare interface I${1:name} {
 	${2:propaties}
 }
 
 snippet interfaceProps
-export interface I${1:name}Props {
+declare interface I${1:name}Props {
 	${2:propaties}
 }
 
 snippet interfaceT
-export interface I${1:name}<T> {
+declare interface I${1:name}<T> {
 	${2:propaties}
 }
 
