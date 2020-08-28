@@ -677,19 +677,28 @@ snippet funcZeroPadding
  * @param  {Number} n  number of characters
  * @return {String} (In an error, 'false' is returned. )
  */
-function zeroPadding(num, n) {
-  var target_string;
+
+export interface IZeroPadding {
+  num: string | number;
+  minimamDisit: number;
+}
+
+export default ({ num, minimamDisit }: IZeroPadding) => {
+  let result;
   switch (typeof num) {
-    case 'string' : target_string = num;
-            break;
-    case 'number' : target_string = num.toString();
-            break;
-    default     : return false;
+    case 'string':
+      result = num;
+      break;
+    case 'number':
+      result = num.toString();
+      break;
+    default:
+      return false;
   }
-  while(target_string.length < n){
-    target_string = '0' + target_string;
+  while (result.length < minimamDisit) {
+    result = '0' + result;
   }
-  return target_string;
+  return result;
 };
 
 # NumberDelimitter
