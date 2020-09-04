@@ -1198,3 +1198,63 @@ snippet consumer
 <${1:Context}.Consumer>
   ${0}
 </$1.Consumer>
+
+
+# ******************************************
+# react-redux ******************************
+
+snippet initialContainerComponent
+import { Action } from 'typescript-fsa';
+
+import { AppState } from '~/store.ts';
+import {${2:action}} from '{${1:aciton.ts}}';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import ${4:component} from '${3:component.ts}';
+
+export interface I$4Handler {
+  // setText: (text: string) => Action<string>;
+}
+
+export const mapStateToProps = (appState: AppState) => {
+  return {
+    //text: appState.TestReducer.text,
+  };
+};
+
+export const mapDispatchToProps = (dispatch: Dispatch<Action<string>>) => {
+  return {
+    //setText: (text: string) => dispatch(setText(text)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)($4);
+
+snippet initialAction
+import actionCreatorFactory from 'typescript-fsa';
+
+const actionCreator = actionCreatorFactory();
+
+// export const init = actionCreator('INIT');
+// export const setText = actionCreator<string>('SET_TEXT');
+
+snippet initialReducer
+import { reducerWithInitialState } from 'typescript-fsa-reducers';
+
+import {${2:action}} from '${1:action.ts}';
+
+//ここにstateの初期値を書く
+export const initialState: ${3} = {
+  //text: 'first impression',
+};
+
+export const TestReducer = reducerWithInitialState(initialState);
+  //.case(
+  //  init,
+  //  (state, payload): ITestState => {
+  //    return initialState;
+  //  }
+  //)
+  //.case(setText, (state, payload) => {
+  //  return { ...state, text: payload };
+  //});
