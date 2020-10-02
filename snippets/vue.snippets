@@ -100,6 +100,59 @@ ${0}
 </style>
 
 # ******************************************
+# vuex
+# ******************************************
+snippet initVuex
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+Vue.use(Vuex);
+
+const state = {
+  isStarted: false,
+};
+
+const getters = {
+  hoge(state) {
+    return state.isStarted;
+  }
+};
+
+const actions = {
+  async loadJson({ state, commit, dispatch }) {
+		// 非同期処理
+    //commit('setIsStarted', payload);
+    commit('setIsStarted', payload);
+  },
+
+  setIsStarted({ commit }, payload) {
+    commit('isStarted', payload);
+  }
+};
+
+const mutations = {
+  setIsStarted(state, payload) {
+    state.isStarted = Boolean(payload);
+  }
+};
+
+export default new Vuex.Store({
+  state,
+  getters,
+  actions,
+  mutations
+});
+
+snippets initVuex2
+const store = new Vuex.Store({
+  modules: {
+    a: moduleA,
+    b: moduleB
+  }
+})
+
+
+# ******************************************
 # ここからJSと同じ
 # oirano snippet
 
@@ -590,11 +643,6 @@ snippet func(closure)
 ${1:script}
 })( window, document );
 
-snippet func(closure_jquery)
-(function( window, document, $ ) {
-${1:script}
-})( window, document, jQuery );
-
 # native function
 snippet forEach
 ${1:name}.forEach(function(${2:name} ,index,arr){
@@ -1054,159 +1102,6 @@ snippet doc_ro
 @return {Object} ${1:name} ${2:discription}
 
 
-
-
-# ******************************************
-# jQuery snippet ***************************
-
-#ajax
-snippet ajaxo
-var ajaxOption = {
-  url    : '${1:mydomain.com/url}',
-  type   : '${2:POST}',
-  dataType : '${3:xml/html/script/json}',
-  data   : $.param( $('${4:Element or Expression}') ),
-  beforeSend : function( xhr ) {
-   xhr.setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00 GMT');
-  },
-  jsonpCallback : '${3:callback function name}'
-};
-
-snippet $ajax
-var jqxhr = $.ajax( ajaxOption  )
-.done( ${2:function} )
-.fail( ${3:function} )
-.always( ${4:function} );
-
-snippet $ajaxhtml
-var ajaxOption = {
-  url    : '${1:mydomain.com/url}',
-  type   : 'GET',
-  dataType : 'html',
-  data   : $.param( $('${2:Element or Expression}') ),
-  beforeSend : function( xhr ) {
-   xhr.setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00 GMT');
-  },
-  jsonpCallback : '${3:callback function name}'
-};
-
-var jqxhr = $.ajax( ajaxOption )
-.done( function( responseText, textStatus, jqXHR ){
-  var html = jQuery(document.createElement('div')).append( jQuery.parseHTML( responseText ) ).find( ${4:selector} )
-})
-.fail( ${5:function} )
-.always( ${6:function} );
-
-snippet $ajaxdfd
-var $dfd = $.Deferred();
-
-var ajaxOption = {
-  url    : '${1:mydomain.com/url}',
-  type   : '${2:POST}',
-  dataType : '${3:xml/html/script/json}',
-  data   : $.param( $('${4:Element or Expression}') ),
-  beforeSend : function( xhr ) {
-   xhr.setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00 GMT');
-  },
-  jsonpCallback : '${3:callback function name}'
-};
-
-$.ajax( ajaxOption ).done( function ( res, status, xhr ) {
-  $dfd.resolve();
-}).fail(function () {
-  $dfd.reject();
-});
-
-return $dfd.promise();
-
-# when
-snippet $when
-$.when(${1:function/object})
-.done(${2:function})
-.fail(${3:function})
-.always( ${4:function});
-
-snippet $whent
-$.when(${1:function/object})
-.then(${2:done_function}, ${3:fail_function});
-
-snippet $whenarray
-$.when.apply(null, ${1:promsie_array})
-.done(${2:function})
-.fail(${3:function})
-.always( ${4:function});
-
-# Deferred
-snippet $dfd
-var $dfd = $.Deferred();
-
-$dfd.resolve();
-$dfd.reject();
-
-return $dfd.promise();
-
-# each
-snippet $each
-${1:jQuery Object}.each( function( index, element ) {
-  var $this = $( element );
-  ${2:script}
-});
-
-
-# # module CommonJS
-# snippet vrequire
-# options head indent
-#   var ${1:name} = require('${2:MoDuleName}');
-# 
-# snippet cexport1
-# options head indent
-#   module.exports = ${1:object or function};
-# 
-# snippet cexport2
-# options head indent
-#   module.exports = {
-#   ${1:name} : ${2:object or function}
-#   };
-# 
-# snippet cexport3
-# options head indent
-#   exports = {
-#   ${1:name} : ${2:object or function}
-#   };
-# 
-# snippet cexportm
-# options head indent
-#   function ${1:name}(){
-#   ${2:script}
-#   }
-#   module.exports = $1;
-#
-#
-# # module UMD
-# snippet module_umd
-# options head indent
-#   (function(root, definition){
-#     // CommonJS
-#     if (typeof exports === 'object') {
-#     module.exports = definition();
-#     // RequireJS
-#     } else if (typeof define === 'function' && define.amd) {
-#     define(definition);
-#     // <script>
-#     } else {
-#     ${1:ClassName} = definition();
-#     }
-#   })(this, function(){
-#     'use strict';
-#   
-#     var $1 = {};
-# 
-#     ${2:functions} 
-# 
-#     return $1;
-#   });
-
-
 ## merge from neosnippets/javascript.snip
 snippet :f
 ${1:#:method_name}: function(${2:#:attribute}) {
@@ -1363,5 +1258,6 @@ import * as ${1:NAME} from "${0:TARGET}";
 
 snippet     import-default-member
 import ${1:defaultMember}, { ${2:MEMBERS} } from "${0:TARGET}";
+
 
 
