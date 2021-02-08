@@ -680,6 +680,44 @@ function numberDelimiter(num) {
   return num.toLocaleString('ja-JP')
 }
 
+# blob download
+snippet blob
+var $button = document.querySelector('#ajax');
+var $progress= document.querySelector('#progress');
+
+const date = new Date();
+const filename = 'filename' + date.getFullYear() + (date.getMonth() + 1) + date.getDate() + '.pdf';
+  const xhr = new XMLHttpRequest();
+
+  $progress.innerText = '読込中';
+
+  xhr.responseType = 'blob';
+  xhr.addEventListener('load', function (e) {
+    if (this.status == 200) {
+      const blob = this.response;
+      //if (navigator.appVersion.toString().indexOf('.NET') > 0) {
+      //  //IE 10+
+      //  window.navigator.msSaveBlob(blob, filename);
+      //} else {
+        const a = document.createElement("a");
+        const blobUrl = window.URL.createObjectURL(new Blob([blob], {
+          type: blob.type
+        }));
+        document.body.appendChild(a);
+        a.style = "display: none";
+        a.href = blobUrl;
+        a.download = filename;
+        a.click();
+        $progress.innerText = 'ダウンロード完了、ブラウザからファイル保存を実行';
+        a.remove();
+      //}
+    }
+  });
+
+  xhr.open('POST', '/download/', true);
+  xhr.send(new FormData(document.querySelector('form')));
+});
+
 # fragment
 snippet fragment
   const _fragment = document.createDocumentFragment();
@@ -694,6 +732,7 @@ snippet fragment
   ${4:element}.appendChild(fragment);
   ${0}
 
+# request
 snippet xmlhttp
 var xhr = new XMLHttpRequest();
 
@@ -732,6 +771,43 @@ xhr.send( 'hoge=piyo&moge=fuga' );
 xhr.abort(); // 再利用する際にも abort() しないと再利用できないらしい.
 
 
+# request
+snippet xmlhttp_download
+  var xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('error', function (e) {
+    $progress.innerText = 'ダウンロード中にエラーが発生しました';
+  });
+
+  xhr.addEventListener('load', function (e) {
+    if (this.status == 200) {
+      var blob = this.response;
+
+      var filename = xhr.getResponseHeader('Content-Disposition').replace(/filename="([^"]*)".*/, '$1');
+
+      $progress.innerText = 'ダウンロード完了、ブラウザからファイル保存を実行';
+
+      if (navigator.appVersion.toString().indexOf('.NET') > 0) {
+        //IE 10+
+        window.navigator.msSaveBlob(blob, filename);
+      } else {
+        var a = document.createElement("a");
+        var blobUrl = window.URL.createObjectURL(new Blob([blob], {
+          type: blob.type
+        }));
+        document.body.appendChild(a);
+        a.style = "display: none";
+        a.href = blobUrl;
+        a.download = filename;
+        a.click();
+        a.parentNode.removeChild(a);
+      }
+    }
+  });
+
+  xhr.open('POST', '/download/', true);
+  xhr.responseType = 'blob';
+  xhr.send(new FormData(document.querySelector('form')));
 
 
 
@@ -1024,13 +1100,13 @@ var ajaxOption = {
   jsonpCallback : '${3:callback function name}'
 };
 
-snippet $ajax
+snippet ajax
 var jqxhr = $.ajax( ajaxOption  )
 .done( ${2:function} )
 .fail( ${3:function} )
 .always( ${4:function} );
 
-snippet $ajaxhtml
+snippet ajaxhtml
 var ajaxOption = {
   url    : '${1:mydomain.com/url}',
   type   : 'GET',
@@ -1049,7 +1125,7 @@ var jqxhr = $.ajax( ajaxOption )
 .fail( ${5:function} )
 .always( ${6:function} );
 
-snippet $ajaxdfd
+snippet ajaxdfd
 var $dfd = $.Deferred();
 
 var ajaxOption = {
@@ -1072,24 +1148,24 @@ $.ajax( ajaxOption ).done( function ( res, status, xhr ) {
 return $dfd.promise();
 
 # when
-snippet $when
+snippet when
 $.when(${1:function/object})
 .done(${2:function})
 .fail(${3:function})
 .always( ${4:function});
 
-snippet $whent
+snippet whenthen
 $.when(${1:function/object})
 .then(${2:done_function}, ${3:fail_function});
 
-snippet $whenarray
+snippet whenarray
 $.when.apply(null, ${1:promsie_array})
 .done(${2:function})
 .fail(${3:function})
 .always( ${4:function});
 
 # Deferred
-snippet $dfd
+snippet dfd
 var $dfd = $.Deferred();
 
 $dfd.resolve();
@@ -1098,7 +1174,7 @@ $dfd.reject();
 return $dfd.promise();
 
 # each
-snippet $each
+snippet each
 ${1:jQuery Object}.each( function( index, element ) {
   var $this = $( element );
   ${2:script}
