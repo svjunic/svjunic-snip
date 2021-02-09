@@ -1026,7 +1026,13 @@ snippet constUseContext
 const ${1:variable} = useContext(${2:ContextName})
 
 ## useEffect
-snippet useEffect1
+snippet useEffect1_react-app
+useEffect( ()=>{
+  ${1:script}
+  // eslint-disable-next-line react-app/react-hooks/exhaustive-deps
+}, [$2]);
+
+snippet useEffect1_react-hook
 useEffect( ()=>{
   ${1:script}
   // eslint-disable-next-line react-hooks/exhaustive-deps
