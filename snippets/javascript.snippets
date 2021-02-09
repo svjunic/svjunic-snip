@@ -326,21 +326,27 @@ Object.keys(${1:object}).forEach((key)=>{
 # before/after
 snippet before "text"
 insertAdjacentHTML('beforebegin', ${0:node or string});
+endsnippet
 
 snippet before1 "node"
 insertAdjacentElement('beforebegin', ${0:node or string});
+endsnippet
 
 snippet before2 "node or string (IE:x)"
 before(${0:node or string});
+endsnippet
 
 snippet after1 "text"
 insertAdjacentHTML('afterend', ${0:string});
+endsnippet
 
 snippet after2 "node"
 insertAdjacentElement('afterend', ${0:node});
+endsnippet
 
 snippet after "node or string (IE:x)"
 after(${0:node or string});
+endsnippet
 
 snippet contains
 el !== ${1:childElmenet} && el.contains($1)${0}
