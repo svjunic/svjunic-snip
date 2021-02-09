@@ -324,16 +324,22 @@ Object.keys(${1:object}).forEach((key)=>{
 });
 
 # before/after
-snippet before1
+snippet before "text"
 insertAdjacentHTML('beforebegin', ${0:node or string});
 
-snippet before2
+snippet before1 "node"
+insertAdjacentElement('beforebegin', ${0:node or string});
+
+snippet before2 "node or string (IE:x)"
 before(${0:node or string});
 
-snippet after1
-insertAdjacentHTML('afterend', ${0:node or string});
+snippet after1 "text"
+insertAdjacentHTML('afterend', ${0:string});
 
-snippet after2
+snippet after2 "node"
+insertAdjacentElement('afterend', ${0:node});
+
+snippet after "node or string (IE:x)"
 after(${0:node or string});
 
 snippet contains
