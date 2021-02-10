@@ -346,12 +346,13 @@ Object.keys(${1:object}).forEach((key)=>{
 endsnippet
 
 # before/after
+
 snippet before "text"
-insertAdjacentHTML('beforebegin', ${0:node or string});
+insertAdjacentHTML('beforebegin', ${0:string});
 endsnippet
 
 snippet before1 "node"
-insertAdjacentElement('beforebegin', ${0:node or string});
+insertAdjacentElement('beforebegin', ${0:node});
 endsnippet
 
 snippet before2 "node or string (IE:x)"
