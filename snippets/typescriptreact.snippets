@@ -83,7 +83,7 @@ function ${1:functionName}(${2:variable or variable=defaultValue}) {
 }
 
 snippet func_es2015_2
-function ${1:functionName}({${2:variable or variable=defaultValue}}) {
+function ${1:functionName}(${2:variable or variable=defaultValue}): ${3:return} {
   ${0}
 }
 
@@ -345,17 +345,29 @@ Object.keys(${1:object}).forEach((key)=>{
 });
 
 # before/after
-snippet before1
-insertAdjacentHTML('beforebegin', ${0:node or string});
 
-snippet before2
+snippet before "text"
+insertAdjacentHTML('beforebegin', ${0:string});
+
+snippet before1 "node"
+insertAdjacentElement('beforebegin', ${0:node});
+endsnippet
+
+snippet before2 "node or string (IE:x)"
 before(${0:node or string});
+endsnippet
 
-snippet after1
-insertAdjacentHTML('afterend', ${0:node or string});
+snippet after1 "text"
+insertAdjacentHTML('afterend', ${0:string});
+endsnippet
 
-snippet after2
+snippet after2 "node"
+insertAdjacentElement('afterend', ${0:node});
+endsnippet
+
+snippet after "node or string (IE:x)"
 after(${0:node or string});
+endsnippet
 
 snippet contains
 el !== ${1:childElmenet} && el.contains($1)${0}
@@ -969,7 +981,7 @@ snippet doc_ps
 # Types ************************************
 # type
 snippet type
-type ${1:name or name<T>} = ${2:typeName,typeName<T>} | ${3:typeName,typeName<T>}
+declare type ${1:name} = ${2:typeName}
 
 # interface
 snippet interface
@@ -984,21 +996,6 @@ declare interface I${1:name}Props {
 
 snippet interfaceT
 declare interface I${1:name}<T> {
-	${2:propaties}
-}
-
-snippet einterface
-export interface I${1:name} {
-	${2:propaties}
-}
-
-snippet einterfaceProps
-export interface I${1:name}Props {
-	${2:propaties}
-}
-
-snippet einterfaceT
-export interface I${1:name}<T> {
 	${2:propaties}
 }
 
@@ -1049,7 +1046,12 @@ const [${1:state}, $1Dispatch] = useReducer(${2:ReducerName}, ${3:initialState})
 
 snippet reducer
 const ${1:ReducerName}Reducer = (state, action) => {
-  ${2:script}
+ switch (action.type) {
+    case '${ActionName}':
+      return {...state, ${$2:variable}};
+    default:
+      throw new Error();
+  }
 };
 
 ## useCallback
