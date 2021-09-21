@@ -1034,27 +1034,27 @@ snippet doc_ps
 # ******************************************
 # Types ************************************
 # type
-snippet type
-type ${1:name or name<T>} = ${2:typeName,typeName<T>} | ${3:typeName,typeName<T>}
+snippet declareType
+declare type ${1:name} = ${2:typeName}
 
 # interface
-snippet interface
+snippet declareInterface
 declare interface I${1:name} {
 	${2:propaties}
 }
 
-snippet interfaceProps
+snippet declareInterfaceProps
 declare interface I${1:name}Props {
 	${2:propaties}
 }
 
-snippet interfaceT
+snippet declareInterfaceT
 declare interface I${1:name}<T> {
 	${2:propaties}
 }
 
 # declare
-snippet declare
+snippet declareNever
 declare const ${1:variableName}: never;
 
 # enum
